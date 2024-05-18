@@ -7,8 +7,6 @@ tags: [optimization]
 math: true
 ---
 
-![](/assets/img/convex-optimization-02.png)
-
 ## Convexity
 ### Convex Sets
 * 두 points의 **convex combination** 은 line segment between them.
