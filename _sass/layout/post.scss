@@ -9,7 +9,7 @@
 }
 
 @mixin dot($pl: 0.25rem, $pr: 0.25rem) {
-  content: '\2022';
+  content: '\2024';
   padding-left: $pl;
   padding-right: $pr;
 }
