@@ -17,7 +17,7 @@ timezone: Asia/Seoul
 
 title: Roh's Warehouse # the main title
 
-tagline: Interested in Optimization and Data Analysis # it will display as the sub-title
+tagline: Interested in Optimization<br>and Data Analysis # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   머신러닝, Machine Learning, 딥러닝, Deep Learning, 통계, Statistics, 최적화, Optimization
