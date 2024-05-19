@@ -34,10 +34,13 @@ math: true
 2. Let $D(x,y)=f_{xx}f_{yy} - f_{xy}^2$.
 
 3. Then
-  a. $D(a,b)>0$ and $f_{xx}(a,b)<0$ implies that $f(x,y)$ has a local maximum at the point $(a,b)$.
-  b. $D(a,b)>0$ and $f_{xx}(a,b)>0$ implies that $f(x,y)$ has a local minimum at the point $(a,b)$.
-  c. $D(a,b)<0$ implies that $f(x,y)$ has neither a local maximum nor a local minimum at the point $(a,b)$, it has instead a saddle point.
-  d. $D(a,b)=0$ implies that the test is inconclusive, so some other technique must be used to solve the problem.
+   1. $D(a,b)>0$ and $f_{xx}(a,b)<0$ implies that $f(x,y)$ has a local maximum at the point $(a,b)$.
+   
+   2. $D(a,b)>0$ and $f_{xx}(a,b)>0$ implies that $f(x,y)$ has a local minimum at the point $(a,b)$.
+   
+   3. $D(a,b)<0$ implies that $f(x,y)$ has neither a local maximum nor a local minimum at the point $(a,b)$, it has instead a saddle point.
+   
+   4. $D(a,b)=0$ implies that the test is inconclusive, so some other technique must be used to solve the problem.
 
 ## Line Search Strategy
 ### Line Search
