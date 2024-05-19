@@ -32,7 +32,7 @@ J^*(\theta)=E_{(x,y)\sim P_{data}}[L(y,f(x;\theta))] \\
 \Rightarrow \nabla_\theta J(\theta) = E[\nabla_\theta L] \approx \frac{1}{N} \sum_{i=1}^N \nabla_\theta L(x_i,y_i;\theta)
 $$
 
-이 때, **stochastic gradient descent(SGD)**은 approximation을 더 적은 수의 sample들( **minibatch** )로 계산하는 방식이다.
+이 때, **stochastic gradient descent(SGD)**은 approximation을 더 적은 수의 sample들(**minibatch**)로 계산하는 방식이다.
 
 $$
 \theta^{(t+1)} = \theta^{(t)} - \frac{\eta_t}{|B_j|} \sum_{i \in B_j} \nabla_{\theta} \mathcal{L}_i, \quad B_j = \text{sample}(D)
@@ -47,7 +47,7 @@ SGD는 당연하게도 GD보다 속도가 빠른데, 이에 더해 심지어 per
 이는 SGD가 이론적으로 GD에 비해 noisy하게 minimum으로 다가가기에 오히려 local optima에 빠지는 것을 피할 수 있기 때문이라고 생각된다.
 
 > Noisy gradients가 regularization으로 작동하는 것으로 볼 수 있다.
-{: .prompt-tip}
+{: .prompt-info}
 
 또한, GD는 data의 distribution보다 data 자체에 대해 최적의 값을 도출하려는 편인데 반해, 
 SGD는 매 instance마다 학습에 사용되는 data가 data distribution에서 새롭게 생성되는 data라고 볼 수 있으므로, GD에 비해 generalization error를 최소화하는 경향이 있다.
