@@ -3,7 +3,7 @@ title: Linear Regression
 author: rdh
 date: 2024-05-04T01:34:52.388Z
 categories: [Machine Learning, Introduction to Machine Learning]
-tags: [linear regression, machine learning]
+tags: [linear regression, regression, machine learning]
 math: true
 ---
 
