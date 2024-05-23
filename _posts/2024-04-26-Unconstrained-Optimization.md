@@ -2,7 +2,7 @@
 title: Unconstrained Optimization
 author: rdh
 date: 2024-04-26T00:23:28.031Z
-categories: [Optimization, Basic]
+categories: [Optimization, Basic Concepts of Optimization]
 tags: [optimization]
 math: true
 ---

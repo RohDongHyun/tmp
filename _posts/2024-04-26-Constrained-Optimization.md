@@ -2,7 +2,7 @@
 title: Constrained Optimization
 author: rdh
 date: 2024-04-26T02:24:33.530Z
-categories: [Optimization, Basic]
+categories: [Optimization, Basic Concepts of Optimization]
 tags: [optimization]
 math: true
 ---
