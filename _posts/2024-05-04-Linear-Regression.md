@@ -174,10 +174,22 @@ $X_1$과 $X_2$간에는 positive correlation이 존재하므로, $X_1$과 $X_2$�
 > Multicollinearity가 존재하는 multiple linear regression model에서는 특정 feature의 parameter의 부호가 바뀌는 경우가 있다. 위 예시의 경우, 이는 $X_2$가 직접적으로 $Y$에 미치는 효과보다 $X_2$가 $X_1$을 통해 간접적으로 $Y$에 미치는 효과가 크기 때문이다.
 {: .prompt-info}
 
-> Multicollinearity이 존재하는 경우 interaction term을 추가하면 해석이 좀 더 용이하다.
+> Multicollinearity이 존재하는 경우, interaction feature를 사용하면 해석이 좀 더 용이하다.
 {: .prompt-tip}
 
+### Assumptions of Multiple Linear Regression
 
+* **Linearity** (선형성)
+  * Input과 response와의 관계가 linear (가장 중요한 assumption)
+  * 만족되지 않는 경우, polynomial regression 또는 non-parametric regression 사용
+
+* **Homoscedasticity** (등분산성)
+  * Error의 variance가 input에 무관하게 일정
+  * 만족되지 않는 경우, weighted regression 사용
+
+* **Normality** (정규성)
+  * Error가 Gaussian distribution을 따름
+  * 만족되지 않는 경우, robust regression 사용
 
 ## Feature Transformation
 ### Categorical Features
