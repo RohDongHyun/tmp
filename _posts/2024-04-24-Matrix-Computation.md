@@ -1,7 +1,7 @@
 ---
 title: Matrix Computation
 author: rdh
-date: 2024-04-25T01:34:06.838Z
+date: 2024-04-24T01:34:06.838Z
 categories: [Optimization, Basic Concepts of Optimization]
 tags: [linear algebra]
 math: true

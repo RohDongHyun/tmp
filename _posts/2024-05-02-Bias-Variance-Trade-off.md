@@ -1,7 +1,7 @@
 ---
 title: Bias-Variance Trade-off
 author: rdh
-date: 2024-05-03T07:00:00.000Z
+date: 2024-05-02T07:00:00.000Z
 categories: [Machine Learning, Introduction to Machine Learning]
 tags: [bias-variance trade-off, machine learning]
 math: true
@@ -55,7 +55,10 @@ $$
 
 ![](/assets/img/Bias-Variance-Trade-off-02.png){: width="650"}
 
-그러나, 이러한 방법은 feature의 수 $p$가 커질수록 data가 sparse해지기 때문에 성능이 좋지 않다 **(curse of dimensionality)**.
+> 그러나, 이러한 방법은 feature의 수 $p$가 커질수록 성능이 좋지 않다. 이를 **curse of dimensionality**라고 한다.
+{: .prompt-warning}
+
+기본적으로 feature의 수, 즉 dimension이 증가하게 되면, data의 밀도가 sparse해지기에 특정 data point의 neighbor에 존재하는 data point의 수가 줄어든다. 즉 전체 data 수에 비해 Avg 계산에 사용되는 data의 비율이 줄어들기 때문에 성능이 줄어들게 되는 것이다.
 
 > 위 방법은 classification에 대해서도 majority voting을 통해 동일하게 작동한다.
 {: .prompt-info}

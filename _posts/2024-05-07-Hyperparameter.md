@@ -1,7 +1,7 @@
 ---
 title: Hyperparameter
 author: rdh
-date: 2024-05-04T07:48:05.299Z
+date: 2024-05-07T07:48:05.299Z
 categories: [Machine Learning, Introduction to Machine Learning]
 tags: [hyperparameter, machine learning]
 math: true

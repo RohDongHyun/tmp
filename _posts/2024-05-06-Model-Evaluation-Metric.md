@@ -1,7 +1,7 @@
 ---
 title: Model Evaluation Metric
 author: rdh
-date: 2024-05-04T06:38:18.357Z
+date: 2024-05-06T06:38:18.357Z
 categories: [Machine Learning, Introduction to Machine Learning]
 tags: [model evaluation metric, machine learning]
 math: true

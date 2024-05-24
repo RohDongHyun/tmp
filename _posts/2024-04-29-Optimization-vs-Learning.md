@@ -1,7 +1,7 @@
 ---
 title: Optimization vs Learning
 author: rdh
-date: 2024-05-02T04:13:39.993Z
+date: 2024-04-29T04:13:39.993Z
 categories: [Optimization, Optimization in Learning]
 tags: [optimization, machine learning]
 math: true
