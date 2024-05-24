@@ -59,13 +59,13 @@ $$
 Ridge regression은 다음 optimization 문제의 Lagrangian form으로 볼 수 있다. (여기서 $s$는 $\lambda$와 같이 regularization의 정도를 결정한다.)
 
 $$
-\text{minimize}_{\beta} \sum_{i=1}^n \left( y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij} \right)^2 \quad \text{subject to} \quad \sum_{j=1}^p \beta_j^2 \leq s
+\text{minimize}_{\beta} \quad \sum_{i=1}^n \left( y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij} \right)^2 \quad \text{subject to} \quad \sum_{j=1}^p \beta_j^2 \leq s
 $$
 
 비슷하게, Lasso regression의 solution은 다음 optimization의 solution이 된다.
 
 $$
-\text{minimize}_{\beta} \sum_{i=1}^n \left( y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij} \right)^2 \quad \text{subject to} \quad \sum_{j=1}^p |\beta_j| \leq s
+\text{minimize}_{\beta} \quad \sum_{i=1}^n \left( y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij} \right)^2 \quad \text{subject to} \quad \sum_{j=1}^p |\beta_j| \leq s
 $$
 
 두 optimization 문제를 그림과 같이 표현하면 각각 아래와 같다 (왼쪽: Lasso, 오른쪽: Ridge).
@@ -75,7 +75,7 @@ $$
 
 ![](/assets/img/regularization-03.png){: width="650"}
 
-이러한 이유로, 일반적으로 Lasso가 Ridge보다 더 좋은 performance를 보인다고 알려져 있으나, 절대적 우열관계를 가지는 것은 아니므로, CV를 통해서 regularization 방법을 결정하는 것이 합리적이다.
+이러한 이유로, 일반적으로 Lasso가 Ridge보다 더 좋은 performance를 보인다고 알려져 있으나, 절대적 우열관계를 가지는 것은 아니므로, cross-validation 방법 등을 통해서 regularization 방법을 결정하는 것이 합리적이다.
 
 ### Elastic Net
 **Elastic net**은 Ridge regression과 Lasso regression의 hybrid model로써,
@@ -88,6 +88,6 @@ $$
 
 이 때, Ridge penalty term는 correlation이 높은 feature들의 coefficient를 조절하여 multicollinearity를 줄여줄 수 있는 인자, Ridge penalty term는 model의 sparsity를 조절하는 인자가 된다.
 
-> Elastic net은 empirical하게 상당히 우수한 performance를 보인다는 것이 알려져 있다.
+> Elastic net은 우수한 performance를 보인다는 것이 empirical하게 알려져 있다.
 {: .prompt-tip}
 
