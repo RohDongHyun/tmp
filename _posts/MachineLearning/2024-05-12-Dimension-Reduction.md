@@ -145,7 +145,7 @@ $$
 
 이 때, $d_{ij}$와 $\hat{d}_{ij}$는 각각 original-dimension space에서의 distance와 low-dimension space에서의 distance를 의미한다.
 
-> S-STRESS는 거리의 제곱을 사용하여, 거리 값의 차이보다는 비율에 더 민감하게 반응합니다.
+> S-STRESS는 distance의 제곱을 사용하기에, distance의 차이보다는 비율에 더 민감하게 반응한다.
 {: .prompt-info}
 
 > Stress function의 값이 기준치보다 큰 값을 갖는 경우에는 mapping을 조정하거나 stress의 크기가 적정한 수준이 될 때까지 dimension을 증가시킨다. 하지만, 결과의 해석이 용이하도록 일반적으로는 2-dim 또는 3-dim을 넘기지는 않는다.
