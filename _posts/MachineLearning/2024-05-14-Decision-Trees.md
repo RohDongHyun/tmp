@@ -45,6 +45,12 @@ $$
 
 하지만, 이론상으로 모든 $R_1, \dots, R_J$에 대해 optimal solution을 찾는 것은 computationally infeasible하다. 따라서, 일반적으로는 recursive binary splitting이라고 알려진 top-down greedy 방법을 사용한다. 
 
+1. RSS를 최소화하는 feature $X_j$와 cutpoint $s$를 선택하여 첫번째 node를 만든다.
+  * Feature space는 두 개의 region $\\{X \vert X_j < s\\}$와 $\\{X \vert X_j \geq s\\}$로 나뉘어진다.
+2. 나뉘어진 region 중 하나에 대해, RSS를 최소화하는 새로운 feature와 cutpoint를 골라 두번째 node를 만든다.
+  * Feature space는 세 개의 region으로 나뉘어진다.
+3. Stopping criterion(각 region 별 data point의 최소 개수 등)에 도달할 때까지 위 과정을 반복한다.
+
 > Decision tree를 만드는 algorithm들은 다양하게 있으므로 (ID3, C4.5, CART, CHAID 등) 관심있으면 따로 찾아보는 것도 좋다.
 {: .prompt-info}
 
@@ -76,7 +82,7 @@ Classification tree 역시 기본적인 tree building process는 동일하며, �
 Classification tree에서는 RSS가 아닌 주로 다음과 같은 **impurity** 지표를 사용한다.
 
 ### Classfication Error Rate
-**Classfication Error Rate**는 잘못 분류된 sample의 비율을 측정하는 지표이다.
+**Classfication error rate**는 잘못 분류된 data의 비율을 측정하는 지표이다.
 
 $$
 \text{E} = 1 - \max_k (\hat{p}_{mk})
@@ -88,7 +94,7 @@ $$
 {: .prompt-info}
 
 ### Gini Index
-**Gini index**는 한 region 내에서 class들이 얼마나 다른지를 측정하는 지표이다.
+**Gini index**는 한 region 내에서 data들이 얼마나 서로 다른 class를 갖고 있는지를 나타내는 지표이다.
 
 총 $K$개의 class가 있을 때, Gini index G는 class들의 total variance를 나타낸다.
 
@@ -99,7 +105,7 @@ $$
 Gini index를 사용하게 되면 단순 classification error rate를 낮출 수 뿐만 아니라, node의 purity 측면 또한 향상시킬 수 있기에 유용한 지표이다.
 
 ### Cross Entrophy
-**Cross entrophy**는 information theory로 부터 유래한 지표로, Gini index와 유사하게 Classification error와 node의 purity을 나타낸다.
+**Cross entrophy**는 information theory로부터 유래한 지표로, Gini index와 유사하게 classification error와 node의 purity을 나타낸다.
 
 $$
 \text{D} = -\sum_{k=1}^K \hat{p}_{mk} \log \hat{p}_{mk}

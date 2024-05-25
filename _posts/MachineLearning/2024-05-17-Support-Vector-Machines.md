@@ -48,6 +48,11 @@ $$
 
 ![](/assets/img/support-vector-machines-03.png){: width="450"}
 
+Margin 위 또는 안에 있는 data point 또는 vector들이 $\beta$를 결정하며, 이 vector들을 **support vectors**라고 한다.
+
+> Maximal margin classifier의 support vector들은 각 class 별로 hyperplane에서 가장 가까운 data point이다.
+{: .prompt-info}
+
 ## Support Vector Classifier
 하지만 현실의 data는 당연하게도 분리되어 있지 않기 때문에, class들을 완벽하게 분리할 수 있는 seperating hyperplane은 존재하지 않는다.
 
@@ -77,7 +82,7 @@ $$
 
 ![](/assets/img/support-vector-machines-05.png){: width="650"}
 
-> Margin 위 또는 안에 있는 data point 또는 vector들이 $\beta$를 결정하며, 이 vector들을 ***support vectors*** 라고 한다.
+> Support vector classifier의 support vector들은 margin 위 또는 안에 있는 data point들이다.
 {: .prompt-info}
 
 ### Hinge Loss
