@@ -3,7 +3,7 @@ title: Decision Trees
 author: rdh
 date: 2024-05-14T09:54:26.447Z
 categories: [Machine Learning, Introduction to Machine Learning]
-tags: [non-linear regression, regression, machine learning]
+tags: [decision tree, regression, classification, machine learning]
 math: true
 ---
 ## Regresssion Decision Tree
