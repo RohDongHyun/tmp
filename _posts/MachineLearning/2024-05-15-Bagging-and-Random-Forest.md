@@ -11,13 +11,13 @@ math: true
 
 * 예: Bagging, Boosting, Random Forest
 
-> Ensemble 방법이 decision tree의 단점인 낮은 예측력과 결과의 불안정성을 해소한다는 것이 empirical하게 알려져있다 ([decision tree 설명](https://rohdonghyun.github.io/posts/Decision-Trees/)).
+> Ensemble 방법이 decision tree의 단점인 낮은 예측력과 결과의 불안정성을 해소한다는 것이 empirical하게 알려져있다 ([Decision Trees](https://rohdonghyun.github.io/posts/Decision-Trees/)).
 {: .prompt-info}
 
 ## Bagging
 **Bagging**, 또는 bootstrap aggregation은 estimation의 variance를 줄이기 위한 방법론이다.
 
-만약 우리가 n개의 training set을 따로 가지고 있고, 각각에 대한 학습 모델이 있다면, 그 모델들의 estimation의 variance는 1/n만큼 작아지게 된다. 이러한 효과를 동일하게 낼 수 있는 기법이 바로 bootstrap이다 ([bootstrap 설명](https://rohdonghyun.github.io/posts/Bootstrap/)). 
+만약 우리가 n개의 training set을 따로 가지고 있고, 각각에 대한 학습 모델이 있다면, 그 모델들의 estimation의 variance는 1/n만큼 작아지게 된다. 이러한 효과를 동일하게 낼 수 있는 기법이 바로 bootstrap이다 ([Bootstrap](https://rohdonghyun.github.io/posts/Bootstrap/)). 
 
 Bagging은 다음과 같이 동작한다.
 
@@ -35,6 +35,8 @@ Bagging의 원리는 decision tree와 같이 variance가 큰 model에 대해서 
 
 > 이를 decision tree 관점에서 본다면, baseline model로 pruning을 하지 않은 fully-growing tree를 사용하는 것이 좋다.
 {: .prompt-tip}
+
+Baseline model로 decision tree를 사용하는 경우 outlier에 둔감하다는 장점 또한 얻을 수 있다.
 
 Bagging은 tree의 개수가 늘어난다고 하여 overfitting이 발생할 가능성이 커지지는 않는다. 일반적으로는 대략 100~200개의 tree를 사용한다.
 
