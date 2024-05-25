@@ -3,7 +3,7 @@ title: Bagging and Random Forest
 author: rdh
 date: 2024-05-15T10:54:49.699Z
 categories: [Machine Learning, Introduction to Machine Learning]
-tags: [bagging, random forest, ensemble, regression, classification, machine learning]
+tags: [bagging, random forest, ensemble, machine learning]
 math: true
 ---
 ## Ensemble

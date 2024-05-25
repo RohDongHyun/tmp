@@ -3,7 +3,7 @@ title: Regularization
 author: rdh
 date: 2024-05-11T05:29:18.121Z
 categories: [Machine Learning, Introduction to Machine Learning]
-tags: [regularization, feature selection, machine learning]
+tags: [regularization, machine learning]
 math: true
 ---
 ## Regularization

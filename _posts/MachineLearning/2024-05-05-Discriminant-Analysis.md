@@ -3,7 +3,7 @@ title: Discriminant Analysis
 author: rdh
 date: 2024-05-05T03:55:00.724Z
 categories: [Machine Learning, Introduction to Machine Learning]
-tags: [discriminant analysis, classification, machine learning]
+tags: [discriminant analysis, machine learning]
 math: true
 ---
 

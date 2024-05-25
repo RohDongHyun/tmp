@@ -3,7 +3,7 @@ title: Non-Linear Regression Model
 author: rdh
 date: 2024-05-13T04:23:34.604Z
 categories: [Machine Learning, Introduction to Machine Learning]
-tags: [non-linear regression, regression, machine learning]
+tags: [non-linear regression, machine learning]
 math: true
 ---
 현실의 data는 결코 linear하지 않지만, linear model은 interpretability에서 큰 장점을 가지고 있기에 자주 사용된다. 여기서는 기존 linear model에 non-linearity를 더해 accuracy와 interpretability를 모두 잡기위한 노력으로 개발된 방법론들을 소개한다.

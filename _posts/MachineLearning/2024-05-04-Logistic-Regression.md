@@ -3,7 +3,7 @@ title: Logistic Regression
 author: rdh
 date: 2024-05-04T03:17:25.487Z
 categories: [Machine Learning, Introduction to Machine Learning]
-tags: [logistic regression, classification, machine learning]
+tags: [logistic regression, machine learning]
 math: true
 ---
 
