@@ -85,7 +85,7 @@ $$
 Var(Z_m) = \frac{1}{n} \sum_{i=1}^n z_{im}^2
 $$
 
-> 위 식으로부터 data set의 total variance는 PC들의 variance의 합과 같다는 것을 알 수 있다.
+> Data set의 total variance는 PC들의 variance의 합과 같다.
 {: .prompt-info}
 
 또한, $m$-th PC의 PVE는 다음과 같은 0과 1사이의 값을 가지며, 모든 PC들의 PVE의 합은 1이 된다.

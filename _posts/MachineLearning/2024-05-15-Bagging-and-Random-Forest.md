@@ -22,7 +22,7 @@ math: true
 Bagging은 다음과 같이 동작한다.
 
 1. B개의 bootstrap training data set ($Z^{\ast b}$)을 생성한다. 
-2. 각 $Z^{\ast b}$에 대해 prediction model $f^{*b}(x)$를 생성하고, estimation 값 $\hat{f}^{*b}(x)$을 계산한다.
+2. 각 $Z^{\ast b}$에 대해 prediction model $f^{\ast b}(x)$를 생성하고, estimation 값 $\hat{f}^{\ast b}(x)$을 계산한다.
 3. 계산된 B개의 estimation 값의 평균을 통해 최종적인 estimation 값을 얻는다.
   * 만약 classfication model인 경우, B개의 estimation에 대한 majority voting을 통해서 최종 estimation을 결정한다.
 
