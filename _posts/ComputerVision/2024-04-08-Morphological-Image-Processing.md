@@ -1,7 +1,7 @@
 ---
 title: Morphological Image Processing
 author: rdh
-date: 2024-04-07T13:00:45.071Z
+date: 2024-04-08T13:00:45.071Z
 categories: [Computer Vision, Digital Image Processing]
 tags: [morphological image processing, digital image processing, computer vision]
 math: true
