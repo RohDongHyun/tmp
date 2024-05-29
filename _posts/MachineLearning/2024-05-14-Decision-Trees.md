@@ -17,9 +17,9 @@ Data를 대략 살펴보았을 때, Years가 4.5를 넘는지와 Hits가 117.5�
 
 ![](/assets/img/decision-tree-02.png){: width="650"}
 
-이러한 형태의 rule-base regression 또는 classification을 ***decision tree*** 라고 한다.
+이러한 형태의 rule-base regression 또는 classification을 **decision tree**라고 한다.
 
-Decision tree에서 $R_1, R_2, R_3$는 ***terminal node*** 라고 불리며, 최종적으로 분할된 영역이 아닌 split되는 지점 (이 예시에서는 Years<4.5, Hits<117.5)을 ***internal nodes*** 라고 불린다.
+Decision tree에서 $R_1, R_2, R_3$는 **terminal node**라고 불리며, 최종적으로 분할된 영역이 아닌 split되는 지점 (이 예시에서는 Years<4.5, Hits<117.5)을 **internal nodes**라고 불린다.
 
 매우 간단한 예시이지만, decision tree가 왜 높은 interpretability를 갖는지, 또 왜 prediction accuracy는 상대적으로 낮은지 쉽게 알 수 있다.
 
