@@ -30,7 +30,7 @@ Moving average filter라고도 한다.
 
 * 장점: noise 제거/감소
 * 단점: blur 효과로 인해 detail 손실
-* 
+
 #### Median Filter
 ![](/assets/img/spatial-filters-09.png){: width="650"}
 
