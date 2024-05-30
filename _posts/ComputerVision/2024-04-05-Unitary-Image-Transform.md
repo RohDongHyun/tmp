@@ -2,7 +2,7 @@
 title: Unitary Image Transform
 author: rdh
 date: 2024-04-05T12:33:55.206Z
-categories: [Computer Vision, Digital Image Processing]
+categories: [Computer Vision, Introduction to Digital Image Processing]
 tags: [unitary transformation, digital image processing, computer vision]
 math: true
 ---

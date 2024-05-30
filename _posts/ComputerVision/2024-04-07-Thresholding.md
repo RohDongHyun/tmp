@@ -2,7 +2,7 @@
 title: Thresholding
 author: rdh
 date: 2024-04-07T13:24:54.572Z
-categories: [Computer Vision, Digital Image Processing]
+categories: [Computer Vision, Introduction to Digital Image Processing]
 tags: [thresholding, digital image processing, computer vision]
 math: true
 ---

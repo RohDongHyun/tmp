@@ -2,7 +2,7 @@
 title: Edge Detection
 author: rdh
 date: 2024-04-09T13:17:15.437Z
-categories: [Computer Vision, Digital Image Processing]
+categories: [Computer Vision, Introduction to Digital Image Processing]
 tags: [edge detection, digital image processing, computer vision]
 math: true
 ---

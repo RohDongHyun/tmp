@@ -2,7 +2,7 @@
 title: Image Restoration
 author: rdh
 date: 2024-04-06T12:43:09.883Z
-categories: [Computer Vision, Digital Image Processing]
+categories: [Computer Vision, Introduction to Digital Image Processing]
 tags: [image restoration, digital image processing, computer vision]
 math: true
 ---

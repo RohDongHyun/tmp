@@ -2,7 +2,7 @@
 title: Affine Transformation and Correction
 author: rdh
 date: 2024-04-02T07:13:40.905Z
-categories: [Computer Vision, Digital Image Processing]
+categories: [Computer Vision, Introduction to Digital Image Processing]
 tags: [affine transformation, gamma correction, histogram equalization, digital image processing, computer vision]
 math: true
 ---

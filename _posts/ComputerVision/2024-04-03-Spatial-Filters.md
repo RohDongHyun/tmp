@@ -2,7 +2,7 @@
 title: Spatial Filters
 author: rdh
 date: 2024-04-03T08:31:29.581Z
-categories: [Computer Vision, Digital Image Processing]
+categories: [Computer Vision, Introduction to Digital Image Processing]
 tags: [convolution, low-pass filter, high-pass filter, digital image processing, computer vision]
 math: true
 ---

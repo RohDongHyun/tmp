@@ -2,7 +2,7 @@
 title: Frequency Domain Filters
 author: rdh
 date: 2024-04-04T08:31:29.581Z
-categories: [Computer Vision, Digital Image Processing]
+categories: [Computer Vision, Introduction to Digital Image Processing]
 tags: [gaussian filter, laplacian filter, digital image processing, computer vision]
 math: true
 ---

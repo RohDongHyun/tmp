@@ -2,7 +2,7 @@
 title: Nyquist Sampling Theory
 author: rdh
 date: 2024-04-01T06:46:06.918Z
-categories: [Computer Vision, Digital Image Processing]
+categories: [Computer Vision, Introduction to Digital Image Processing]
 tags: [nyquist sampling theory, digital image processing, computer vision]
 math: true
 ---
