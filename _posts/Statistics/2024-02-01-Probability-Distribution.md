@@ -1,7 +1,7 @@
 ---
 title: Probability Distribution
 author: rdh
-date: 2019-02-01 11:33:00 +0800
+date: 2024-02-01 11:33:00 +0800
 categories: [Statistics, Introduction to Statistics]
 tags: [probability distribution, statistics]
 math: true
@@ -169,22 +169,78 @@ X의 평균을 $\mu$라고 하자.
 
 이 때, 베르누이 확률변수 (Bernoulli random variable)는 베르누이 시행의 결과를 0 또는 1의 값으로 대응시키는 확률변수를 말한다. 즉, $X(s)=1, X(f)=0$인 확률변수이다.
 
-베르누이 확률변수의 확률분포를 베르누이 분포라 하고, $X \sim Ber(p)$라고 한다.
+베르누이 확률변수의 확률분포를 베르누이 분포(Bernoulli distribution)라 하고, $X \sim Ber(p)$으로 나타낸다.
 
 * $p(x) = p^x (1 - p)^{1-x}, \quad x = 0, 1$
 * $\mathbb{E}(X) = p$
 * $\text{Var}(X) = \mathbb{E}(X^2) - [\mathbb{E}(X)]^2 = p(1 - p)$
 
 ### Binomial Distribution
+이항 분포 (Binomial Distribution)는 베르누이 시행을 n번 독립적으로 시행할 때 성공횟수의 분포로, $X \sim B(n,p)$ 또는 $Bin(n,p)로 나타낸다.
+
+* $p(x) = \binom{n}{x} p^x (1-p)^{n-x}, \quad x = 0, \ldots, n$
+* $n=1$이면, 베르누이 분포
+* $\mathbb{E}(X) = np$
+* $\text{Var}(X) = np(1 - p)$
 
 ### Poisson Distribution
+포아송 분포 (Poisson Distribution)는 일정 기간 또는 특정 공간상에서 일어나는 독립적인 사건들의 횟수를 모형화 한 분포로, $X \sim Poi(\lambda)$로 나타낸다.
+
+* $p(x) = \frac{\lambda^x}{x!} e^{-x}, \quad x = 0, \ldots, \lambda>0$
+* $\mathbb{E}(X) = \lambda$
+* $\text{Var}(X) = \lambda$
+* $X_1 \sim Poi(\lambda_1)$, $X_2 \sim Poi(\lambda_2)$ 일 때, $X_1 + X_2 \sim Poi(\lambda_1 + \lambda_2)$
 
 ### Uniform Distribution
+확률변수 X가 a와 b 사이에서 같은 정도로 값을 가질 때, 균등분포 (Uniform Distribution)를 따른다고 하며, $X \sim Uniform(a,b)$로 나타낸다.
+
+* $f(x) = \frac{1}{b-a}, \quad a < x < b$
+* $\mathbb{E}(X) = \frac{a+b}{2}$
+* $\text{Var}(X) = \frac{(b-a)^2}{12}$
 
 ### Beta Distribution
+베타 분포 (Beta Distribution)는 연속확률분포 중의 하나로 $0 \leq X \leq 1$인 확률변수가 다음의 확률밀도함수를 가지는 경우이다.
+
+$$
+f(x) = f(x \mid \alpha, \beta) = \frac{1}{B(\alpha, \beta)} x^{\alpha-1} (1-x)^{\beta-1}, \quad x \in [0,1], \, \alpha > 0, \beta > 0.
+$$
+
+$X \sim Beta(\alpha, \beta)$로 나타낸다.
+
+* $B(\alpha, \beta) = \frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha + \beta)}$는 정규화 상수(normalizing constant)라고 한다.
+  * $\Gamma(x)$: 감마함수
+* $\mathbb{E}(X) = \frac{\alpha}{\alpha + \beta}$
+* $\alpha = \beta = 1$이면, 베타분포는 균일분포와 같다.
 
 ### Exponential Distribution
+지수 분포 (Exponential Distribution)는 하나의 사건이 일어난 후 독립인 그 다음 사건이 일어날 때까지 기다리는 시간 (waiting time)을 모형화 한 분포로, $X \sim Exp(\lambda)$로 나타낸다.
+
+* $f(x) = \lambda \exp(-\lambda x), \quad x>0$
+  * $\lambda$: rate parameter
+* $f(x) = \frac{1}{\rho} \exp(- x / \rho), \quad x>0$
+  * $\rho$: scale parameter
+* $\mathbb{E}(X) = \frac{1}{\lambda} = \rho$
+* $\text{Var}(X) = \frac{1}{\lambda^2} = \rho^2$
+* Memoryless Property: $P(X>s+t \mid X>s) = P(X>t), \, s,t>0$
 
 ### Normal Distribution
+정규 분포 (Normal Distribution)는 가우스(Gauss, 1777-1855)에 의해 제시된 분포로서 Gaussian distribution라고도 불린다.
+
+물리학 실험 등에서 오차에 대한 확률분포를 연구하는 과정에서 발견된 연속확률분포로, 통계학 초기 발전 단계에서 모든 자료의 히스토그램이
+가우스분포의 형태와 유사하지 않으면 비정상적인 자료라고
+믿어서 "정규(normal)"라는 이름이 붙게 되었다.
+
+$X \sim N(\mu, \sigma^2)$로 나타내며, 다음과 같은 확률밀도함수를 갖는다.
+
+$$
+f(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}}exp(-\frac{(x-\mu)^{2}}{2\sigma^{2}}), \quad -\infty<x<\infty, \, \sigma>0
+$$
+
+* $\mu$: 평균, $\sigma^2$: 분산
+  * $\tau = 1/\sigma^2$: precision
+* $X \sim N(\mu, \sigma^2)$ 일 때, $aX+b \sim N(a\mu+b, a^2\sigma^2)$
 
 #### Standard Normal Distribution
+평균이 0이고 표준편차가 1인 정규분포를 표준정규분포 (standard normal distribution)라고 하며, 보통 $Z$로 표기한다.
+
+* 표준화(standardization): $X \sim N(\mu, \sigma^2)$ 일 때, $Z = \frac{X-\mu}{\sigma} \sim N(0,1)$
