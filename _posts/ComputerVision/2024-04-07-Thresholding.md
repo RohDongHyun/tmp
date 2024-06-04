@@ -58,8 +58,6 @@ $$
 > Lowpass filter 적용 후에, Otsu's algorithm을 적용하거나, edge 근처의 pixel들에 대해서만 Otsu's algorithm을 적용하는 것도 방안
 {:.prompt-tip}
 
-![](/images/21bcc7ca-336e-47f6-83da-4cc53dfa1b88-image.png)
-
 ## Variable or Adaptive Thresholding
 Image를 여러 block들로 나누고, 각 block 별로 specified function을 각각 적용하는 방식이다.
 
