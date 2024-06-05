@@ -28,10 +28,10 @@ math: true
 
     * $f(x, y) \geq 0$
     * $\int \int f(x, y) \, dx \, dy = 1$
-    * *$P(a < X \leq b, c < Y \leq d) = \int_c^d \int_a^b f(x, y) \, dx \, dy$
+    * $P(a < X \leq b, c < Y \leq d) = \int_c^d \int_a^b f(x, y) \, dx \, dy$
 
 
-* $E[g(X, Y)] = \begin{cases} \sum_x \sum_y g(x, y) p(x, y) \\ \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x, y) f(x, y) \, dx \, dy \end{cases}$
+* $E[g(X, Y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x, y) f(x, y) \, dx \, dy$
 
 * $E[ag(X, Y) + bh(X, Y)] = a E[g(X, Y)] + b E[h(X, Y)]$
 
@@ -99,13 +99,13 @@ math: true
     $p(y \mid x)$는 $X = x$로 고정 되어있을 때의 Y의 확률질량함수이다.
 
 2. 연속 확률변수  
-    두개의 연속 확률변수 X, Y에 대하여 X = x가 주어졌을 때의 Y의 확률밀도함수:
+    두개의 연속 확률변수 X, Y에 대하여 $X = x$가 주어졌을 때의 Y의 확률밀도함수:
 
     $$
     f(y \mid x) = \frac{f(x,y)}{f(x)}
     $$
 
-    f(y|x)는 X = x가 고정되어 있을 때의 Y의 확률밀도함수이다.
+    $f(y \mid x)$는 $X = x$가 고정되어 있을 때의 Y의 확률밀도함수이다.
 
     * 하나가 이산 확률변수이고, 다른 하나가 연속 확률변수여도 잘 정의 될 수 있다.
 
@@ -276,7 +276,7 @@ $$
     = (2\pi)^{-\frac{p}{2}} \lvert \Sigma \rvert^{-\frac{1}{2}} \exp \left( -\frac{1}{2} (\mathbf{x} - \mu)^T \Sigma^{-1} (\mathbf{x} - \mu) \right),
     $$
 
-    * $|\Sigma|$는 $\Sigma$의 행렬식 (determinant)이다.
+    * $\vert \Sigma \vert$는 $\Sigma$의 행렬식 (determinant)이다.
 
 * $\mathbf{X} \sim N_p(\mu, \Sigma)$로 나타낸다.
 
@@ -294,7 +294,7 @@ $$
 
 * $X_1, \cdots, X_p$중에 $k \, (k \leq p)$개의 원소를 뽑아 만든 벡터 $\mathbf{X}_s = (X_{i_1}, \cdots, X_{i_k})$도 가우시안분포를 따른다.
 
-* $\mathbf{X}_s \sim N_s(\mu_s, \Sigma_s), \, \mu_s = (\mu_{i_1}, \cdots, \mu_{i_k})^T, \, \Sigma_s$의 $(l, m)$ 원소는 $\sigma_{i_l, i_m}$ 이다.
+* $$\mathbf{X}_s \sim N_s(\mu_s, \Sigma_s), \mu_s = (\mu_{i_1}, \dots, \mu_{i_k})^T, \Sigma_s$$의 $(l, m)$ 원소는 $\sigma_{i_l, i_m}$ 이다.
 
 * $p = 2$인 경우, 이변량 가우시안 (bivariate Gaussian) 분포이며, 확률밀도함수는 다음과 같이 상관계수를 포함한 5개의 모수로 표현 할 수도 있다. 이때, $\sigma_{12} = \rho \sigma_1 \sigma_2$이다.
 
@@ -307,13 +307,13 @@ $$
 ### Partitioned Gaussian Distribution
 가우시안 확률벡터의 일부로 만든 벡터의 분포를 분할 가우시안 분포 (Partitioned Gaussian Distribution)라고 하며, 평균벡터와 공분산 행렬은 원 확률벡터의 평균벡터와 공분산행렬을 분할하여 표현할 수 있다.
 
-$\mathbf{X} = (X_1, \cdots, X_p)^T \sim N_p(\mu, \Sigma)$일때, $\mathbf{X} = (\mathbf{X}_1^T, \mathbf{X}_2^T)^T$로 나누어진다고 하자. 편의상 $\mathbf{X}_1 = (X_1, \cdots, X_m)^T, \mathbf{X}_2 = (X_{m+1}, \cdots, X_p)^T$라고 하자. 실제로는 순서상관없이 두개의 그룹으로 묶어도 된다.
+$\mathbf{X} = (X_1, \cdots, X_p)^T \sim N_p(\mu, \Sigma)$일 때, $$\mathbf{X} = (\mathbf{X}_1^T, \mathbf{X}_2^T)^T$$로 나누어진다고 하자. 편의상 $$\mathbf{X}_1 = (X_1, \cdots, X_m)^T, \mathbf{X}_2 = (X_{m+1}, \cdots, X_p)^T$$라고 하자. 실제로는 순서상관없이 두개의 그룹으로 묶어도 된다.
 
-이때, $\mathbf{X}_1 \sim N_m(\mu_1, \Sigma_{11}), \, \mu = (\mu_1^T, \mu_2^T)^T,
+이때, $$\mathbf{X}_1 \sim N_m(\mu_1, \Sigma_{11}), \, \mu = (\mu_1^T, \mu_2^T)^T,
 \Sigma = \begin{pmatrix}
 \Sigma_{11} & \Sigma_{12} \\
 \Sigma_{21} & \Sigma_{22}
-\end{pmatrix}$
+\end{pmatrix}$$
 
 #### Conditional Partitioned Gaussian Distribution
 
