@@ -23,7 +23,7 @@ math: true
 * $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
 
 ### Conditional Probability
-사건 A가 주어졌을 때 사건 B의 조건부확률은 $P(B\vert A)$로 나타내고 $P(A) > 0$이라는 가정 하에 다음과 같이 정의된다.
+사건 A가 주어졌을 때 사건 B의 조건부확률(Conditional Probability)은 $P(B\vert A)$로 나타내고 $P(A) > 0$이라는 가정 하에 다음과 같이 정의된다.
 
 $$
 P(B\vert A) = \frac{P(A \cap B)}{P(A)}
@@ -32,7 +32,6 @@ $$
 즉, 사건 A를 축소된 새로운 표본공간으로 간주했을 때, 사건 B가 일어날 확률을 말한다.
 
 #### Law of Total Probability
-
 표본공간 $S$의 분할 $\\{A_1, \ldots, A_n\\}$을 생각하자. 표본공간의 분할 (partition)은 다음을 만족한다.
 $\forall A_i \cap A_j = \emptyset \ (i \neq j), \ A_1 \cup A_2 \cup \cdots \cup A_n = S$
 이때, 전확률공식(law of total probability)는 다음과 같다.
@@ -70,7 +69,7 @@ $$
 확률변수 X의 확률분포 (probability distribution)란 확률변수 X가 가질 수 있는 값과 해당하는 확률에 대해 나타낸 것으로, 확률을 계산 할 수 있는 정보를 제공한다.
 
 #### Discrete Random Variable
-X가 취할 수 있는 값이 $x_1, x_2, x_3, \dots$와 같이 이산 일 때: 해당 값과 대응하는 확률을 제공한다.
+이산확률변수(Discrete Random Variable)는 X가 취할 수 있는 값이 $x_1, x_2, x_3, \dots$와 같이 이산 일 때: 해당 값과 대응하는 확률을 제공한다.
 
 확률분포는 다음과 같은 확률질량함수 (probability mass function, pmf) $p(x)$로 표현한다.
 
@@ -87,7 +86,7 @@ $$
 * $P(a < X \leq b) = \sum_{a < x \leq b} p(x)$
 
 #### Continous Random Variable
-X의 취할 수 있는 값이 셀 수 없이 많을 때: 특정 구간에 속하는 확률을 계산할 수 있는 정보를 제공한다.
+연속확률변수(Continous Random Variable)는 X의 취할 수 있는 값이 셀 수 없이 많을 때: 특정 구간에 속하는 확률을 계산할 수 있는 정보를 제공한다.
 
 확률분포는 확률밀도함수 (probability density function, pdf) $f(x)$ 를 도입하여 X의 값이 $a \leq X \leq b$일 확률로 표현한다.
 
@@ -100,7 +99,7 @@ $$
 * 연속확률변수의 한 점에서의 확률은 0이다: $P(X=a)=0$
 
 #### Cumulative Distribution Function (CDF)
-pmf, pdf 외에 확률분포를 나타내는 또 다른 함수로 다음과 같이 정의된다. (이산확률변수, 연속확률변수에 상관없음)
+Cumulative Distribution Function (CDF)는 pmf, pdf 외에 확률분포를 나타내는 또 다른 함수로 다음과 같이 정의된다. (이산확률변수, 연속확률변수에 상관없음)
 
 $$
 F_X(x) = P(X \leq x)
@@ -176,7 +175,7 @@ X의 평균을 $\mu$라고 하자.
 * $\text{Var}(X) = \mathbb{E}(X^2) - [\mathbb{E}(X)]^2 = p(1 - p)$
 
 ### Binomial Distribution
-이항 분포 (Binomial Distribution)는 베르누이 시행을 n번 독립적으로 시행할 때 성공횟수의 분포로, $X \sim B(n,p)$ 또는 $Bin(n,p)로 나타낸다.
+이항 분포 (Binomial Distribution)는 베르누이 시행을 n번 독립적으로 시행할 때 성공횟수의 분포로, $X \sim B(n,p)$ 또는 $Bin(n,p)$로 나타낸다.
 
 * $p(x) = \binom{n}{x} p^x (1-p)^{n-x}, \quad x = 0, \ldots, n$
 * $n=1$이면, 베르누이 분포
