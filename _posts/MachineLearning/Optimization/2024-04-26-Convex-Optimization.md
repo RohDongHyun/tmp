@@ -2,7 +2,7 @@
 title: Convex Optimization
 author: rdh
 date: 2024-04-26T05:04:20.615Z
-categories: [Optimization, Basic Concepts of Optimization]
+categories: [Machine Learning, Optimization]
 tags: [optimization]
 math: true
 ---
