@@ -2,7 +2,7 @@
 title: Calculus Backgrounds
 author: rdh
 date: 2024-04-25T04:19:41.575Z
-categories: [Optimization, Basic Concepts of Optimization]
+categories: [Machine Learning, Optimization]
 tags: [vector calculus]
 math: true
 ---
