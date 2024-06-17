@@ -7,11 +7,13 @@ tags: [deep learning]
 math: true
 ---
 
-Basic statistics와 matrix derivatives 등 앞서 post에서 다룬 내용은 생략한다.
+`Basic statistics와 matrix derivatives 등 앞서 post에서 다룬 기초 수학 내용 및 deep learning의 학습의 기본이 되는 gradient descent 등의 방법론은 아래 post를 참고`
 
 * [Basic Statistics](https://rohdonghyun.github.io/categories/introduction-to-statistics/)
 * [Matrix Computation](https://rohdonghyun.github.io/posts/Matrix-Computation/)
 * [Calculus Backgrounds](https://rohdonghyun.github.io/posts/Calculus-Backgrounds/)
+* [Stochastic Gradient Descent](https://rohdonghyun.github.io/posts/Stochastic-Gradient-Descent/)
+* [Momentum](https://rohdonghyun.github.io/posts/Momentum/)
 
 ## Distributions 
 ### Logistic Sigmoid
