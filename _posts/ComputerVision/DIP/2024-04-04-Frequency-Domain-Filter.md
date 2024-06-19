@@ -99,7 +99,9 @@ FT를 활용한 frequency domain image processing은 kernel 방식의 image doma
 ### Gaussian Lowpass Filter
 Gaussian은 FT 시에도, 함수가 바뀌지 않는 성질이 있어 다루기 편하다.
 
-![](/assets/img/frequency-domain-filters-07.png){: width="650"}
+![](/assets/img/frequency-domain-filters-11.png){: width="650"}
+
+![](/assets/img/frequency-domain-filters-12.png){: width="650"}
 
 ### Laplacian Filter (Highpass Filter)
 Edge detecting 및 image sharpening에 사용된다.
@@ -107,6 +109,8 @@ Edge detecting 및 image sharpening에 사용된다.
 ![](/assets/img/frequency-domain-filters-08.png){: width="650"}
 
 ![](/assets/img/frequency-domain-filters-09.png){: width="650"}
+
+![](/assets/img/frequency-domain-filters-07.png){: width="650"}
 
 ### Anti-aliasing Filter
 Lowpass filter를 통해 aliasing과 같은 visual artifact를 제거한다.

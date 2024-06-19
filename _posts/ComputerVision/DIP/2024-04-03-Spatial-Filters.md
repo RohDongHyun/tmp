@@ -24,12 +24,15 @@ math: true
 ## Spatial Filters
 ### Low Pass Filter
 #### Smoothing Filter
-Moving average filter라고도 한다.
+Box filter 또는 moving average filter라고도 한다.
 
 ![](/assets/img/spatial-filters-04.png){: width="650"}
 
 * 장점: noise 제거/감소
 * 단점: blur 효과로 인해 detail 손실
+
+> $$\frac{1}{3} \begin{bmatrix} 0 & 0 & 0 \\ 1 & 1 & 1 \\ 0 & 0 & 0 \end{bmatrix}$$은 horizontal blur, $$\frac{1}{3} \begin{bmatrix} 0 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 1 & 0 \end{bmatrix}$$은 vertical blur이다.
+{: .prompt-info}
 
 #### Median Filter
 ![](/assets/img/spatial-filters-09.png){: width="650"}
