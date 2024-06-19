@@ -52,7 +52,7 @@ SGD는 당연하게도 GD보다 속도가 빠른데, 이에 더해 심지어 per
 또한, GD는 data의 distribution보다 data 자체에 대해 최적의 값을 도출하려는 편인데 반해, 
 SGD는 매 instance마다 학습에 사용되는 data가 data distribution에서 새롭게 생성되는 data라고 볼 수 있으므로, GD에 비해 generalization error를 최소화하는 경향이 있다.
 
-> 따라서, dataset을 minibatch로 나눌 때 minibatch 간 distribution이 유사하도록 분리하는 것이 좋다.
+> 따라서, dataset을 minibatch로 나눌 때 minibatch 간 distribution이 유사하도록 분리하는 것이 좋기 때문에 일반적으로 나누기 전 data를 한번 섞어준다.
 {: .prompt-tip}
 
 ![](/assets/img/stochastic-gradient-descent-01.png){: width=300}
