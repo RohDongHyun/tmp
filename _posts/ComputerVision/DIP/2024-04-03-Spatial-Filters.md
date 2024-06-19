@@ -16,9 +16,13 @@ math: true
 
 ![](/assets/img/spatial-filters-03.png){: width="650"}
 
-정의에 엄밀한 2D Convolution은 image spread function 또는 kernel을 flip해서 elementwise multiplication을 수행해야 한다.
+정의에 엄밀한 2D Convolution은 image spread function 또는 kernel을 flip해서 elementwise multiplication을 수행해야 한다. Kernel을 flip하지 않고 그대로 elementwise mutliplication을 수행하는 경우 correlation을 구하게 된다.
 
-> 하지만, 실제적으로는 kernel을 뒤집지 않더라도 각 pixel을 neighbor와의 liner 조합으로 바꾸는 것에는 차이가 없으므로 kernel을 뒤집어서 곱하지는 않는다. (이미 뒤집혀진 kernel이라고 생각)
+![](/assets/img/spatial-filters-10.png){: width="650"}
+
+![](/assets/img/spatial-filters-11.png){: width="650"}
+
+> 하지만, 실제적으로는 kernel을 뒤집지 않더라도 각 pixel을 neighbor와의 liner 조합으로 바꾸는 것에는 차이가 없으므로 일반적으로 kernel을 뒤집지 않아도 convolution이라고 말한다 (이미 뒤집혀진 kernel이라고 생각).
 {: .prompt-tip}
 
 ## Spatial Filters
