@@ -74,7 +74,7 @@ $$
 1. Gaussian smoothing을 통해 image의 noise를 제거한다.
 2. Gradient (magnitude & angle)을 계산한다.
 3. Pixel이 gradient angle로부터 가장 큰 gradient magnitude를 갖는 local maximum인 경우에만 edge로 설정한다. (**non-maximum suppression**)
-4. 두 개의 threshold($I_H$, I_L$)를 사용해 strong edge와 weak edge를 구한다.
+4. 두 개의 threshold($I_H$, $I_L$)를 사용해 strong edge와 weak edge를 구한다.
 5. Strong edge와 weak edge 중 strong edge와 인접한 pixel들을 연결하여 edge를 완성한다. (**edge linking**)
 
 > 주로 $I_H$는 $I_L$의 2~3배로 설정한다.
