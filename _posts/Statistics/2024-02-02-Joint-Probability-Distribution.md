@@ -1,7 +1,7 @@
 ---
 title: Joint Probability Distribution
 author: rdh
-date: 2019-02-02 11:33:00 +0800
+date: 2024-02-02 11:33:00 +0800
 categories: [Statistics, Introduction to Statistics]
 tags: [joint probability distribution, statistics]
 math: true
