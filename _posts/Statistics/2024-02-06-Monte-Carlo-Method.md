@@ -28,13 +28,13 @@ $$
 따라서, 몬테카를로 방법을 쓰기 위해서는 주어진 확률분포로부터 무작위 샘플을 생성하는 (난수생성) 알고리즘이 필요하다.
 
 > 대부분의 알려진 확률분포들은 무작위 샘플을 생성하는 알고리즘들이 연구되어, R, Python 등에서 쉽게 사용할 수 있다.
-{: .prompt-info}
+{: .prompt-tip}
 
 ## Sampling Methods
 ### Inverse CDF
 **Inverse CDF** 샘플링 방법은 Probability Integral Transform (PIT)를 이용한 방법이다. 
 
-* PIT: $F_X(x) = x$
+* PIT: 연속 확률 변수 X의 CDF를 $F_X$라고 할 때, $F_X(X)$는 $\text{Unif}(0,1)$을 따른다.
 
 만약 $F_X(X) \sim U, U$는 $(0, 1)$에서의 균일분포 $(\text{Unif}(0,1))$이면 다음이 성립한다.
 
