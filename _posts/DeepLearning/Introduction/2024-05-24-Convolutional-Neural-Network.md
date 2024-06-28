@@ -33,7 +33,7 @@ Convolution layer는 여러 개의 filter를 가질 수도 있다. 하나의 fil
 
 일반적으로 학습은 batching을 적용하기 때문에, 이를 고려하면 최종적으로 하나의 convolution layer는 다음과 같다.
 
-![](/assets/img/Convolutional-Neural-Network-03.png){: width="350"}
+![](/assets/img/Convolutional-Neural-Network-03.png){: width="650"}
 
 * $N$: batch size
 * $C_{in}$: input channel 수
@@ -119,12 +119,12 @@ Alexnet의 구조는 다음과 같다. LeNet-5 모델과 비교하면, 기본적
 
 모델이 좀 더 복잡해진 대신, 학습에 사용되는 data의 양이 훨씬 많아졌기에 보다 좋은 성능을 낼 수 있었다.
 
-![](/assets/img/Convolutional-Neural-Network-12.png){: width="650"}
+![](/assets/img/Convolutional-Neural-Network-12.png)
 
 ### VGG16
 AlexNet에서는 다양한 크기의 filter(11, 5 등)을 사용했으나, VGG16에서는 3x3 size의 filter만을 사용하였다. 또한, 8개의 layer를 갖는 AlexNet에 비해 VGG16은 16개의 layer를 갖는다.
 
-![](/assets/img/Convolutional-Neural-Network-13.png){: width="650"}
+![](/assets/img/Convolutional-Neural-Network-13.png)
 
 ### GoogLeNet
 VGG16은 단순하고 일관된 구조를 가진 layer의 수를 늘려 성능을 향상 시켰는데, 이는 computation cost(memory와 time 모두)가 크다는 단점이 있었다.
@@ -138,7 +138,7 @@ GoogLeNet은 inception module을 도입하여 다양한 크기의 filter를 병�
 ### ResNet
 2015년 ILSVRC에서 가장 좋은 성능을 기록한 ResNet은 152개의 layer를 가진 CNN 모델이다. ResNet의 가장 큰 특징은 **shortcut connection** 또는 **skip connection**이다. Shortcut connection은 NN에서 일부 layer를 건너뛰어 이전 layer의 output을 이후 layer의 input으로 직접 전달하는 연결방식을 말한다.
 
-![](/assets/img/Convolutional-Neural-Network-15.png){: width="650"}
+![](/assets/img/Convolutional-Neural-Network-15.png){: width="350"}
 
 Shortcut connection을 적용하면, 최종 output으로부터 각 layer 까지의 path가 짧아지게 되어 vanishing gradient 문제를 어느정도 완화 할 수 있고, 이를 통해 매우 깊은 모델에서도 학습이 안정적으로 진행된다.
 
