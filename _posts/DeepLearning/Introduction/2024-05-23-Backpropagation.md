@@ -3,7 +3,7 @@ title: "Backpropagation"
 author: rdh
 date: 2024-05-23 01:14:08.30
 categories: [Deep Learning, Introduction to Deep Learning]
-tags: [feedforward neural net, deep learning]
+tags: [backpropagation, deep learning]
 math: true
 ---
 

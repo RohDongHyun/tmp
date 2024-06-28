@@ -3,7 +3,7 @@ title: "FeedForward Neural Networks"
 author: rdh
 date: 2024-05-22 03:55:39.355
 categories: [Deep Learning, Introduction to Deep Learning]
-tags: [feedforward neural net, deep learning]
+tags: [feedforward neural net, fnn, deep learning]
 math: true
 ---
 
