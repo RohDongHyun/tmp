@@ -2,7 +2,7 @@
 title: Stochastic Gradient Descent
 author: rdh
 date: 2024-04-30T05:40:50.230Z
-categories: [Machine Learning, Optimization]
+categories: [Optimization, Optimization in Learning]
 tags: [optimization, machine learning]
 math: true
 ---

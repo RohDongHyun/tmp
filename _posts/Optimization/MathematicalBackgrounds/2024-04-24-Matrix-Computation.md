@@ -2,7 +2,7 @@
 title: Matrix Computation
 author: rdh
 date: 2024-04-24T01:34:06.838Z
-categories: [Machine Learning, Optimization]
+categories: [Optimization, Mathmatical Backgrounds]
 tags: [linear algebra]
 math: true
 # media_subpath: /assets/img/
