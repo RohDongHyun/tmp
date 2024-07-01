@@ -64,7 +64,7 @@ LSTM은 RNN에서의 hidden state를 조금 더 복잡한 구조를 갖는 cell�
 
 ![](/assets/img/LSTM-and-GRU-02.png){: width="650"}
 
-LSTM의 핵심 idea는 **cell state**라고 하는 $C_t$에 중요한 과거 정보를 담아서 전파를 함으로써 오래된 정보를 장기간 유지시키는 것이다. 즉, gate가 적절히 동작하게 되면 $C_t$는 훨씬 이전의 정보를 directly 갖고 있는 것과 동일한 효과를 갖게 된다. 따라서, cell state를 통해 gradient가 직접적으로 과거의 cell에 전파되는 효과를 가지므로 vanishing gradient 현상을 완화할 수 있다.
+LSTM의 핵심 idea는 **cell state**라고 하는 $C_t$에 중요한 과거 정보를 담아서 전파를 함으로써 오래된 정보를 장기간 유지시키는 것이다. 즉, gate가 적절히 동작하게 되면 $C_t$는 훨씬 이전의 정보를 directly 갖고 있는 것과 동일한 효과를 갖게 된다. Cell state는 addition 연산을 통해 정보가 전달된다. 따라서, cell state를 통해 gradient가 직접적으로 과거의 cell에 전파되는 효과를 가지므로 vanishing gradient 현상을 완화할 수 있다.
 
 LSTM에 존재하는 gate들은 다음과 같다.
 
