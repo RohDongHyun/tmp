@@ -2,7 +2,7 @@
 title: Unconstrained Optimization
 author: rdh
 date: 2024-04-27T00:23:28.031Z
-categories: [Optimization, Mathematical Backgrounds]
+categories: [02. Optimization, 01. Mathmatical Backgrounds]
 tags: [optimization]
 math: true
 ---

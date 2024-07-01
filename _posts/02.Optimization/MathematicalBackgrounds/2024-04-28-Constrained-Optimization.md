@@ -2,7 +2,7 @@
 title: Constrained Optimization
 author: rdh
 date: 2024-04-28T02:24:33.530Z
-categories: [Optimization, Mathematical Backgrounds]
+categories: [02. Optimization, 01. Mathmatical Backgrounds]
 tags: [optimization]
 math: true
 ---
