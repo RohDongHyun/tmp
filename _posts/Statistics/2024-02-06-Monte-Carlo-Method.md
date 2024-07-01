@@ -2,7 +2,7 @@
 title: Monte Carlo Method
 author: rdh
 date: 2024-02-06 11:33:00 +0800
-categories: [Statistics, Introduction to Statistics]
+categories: [01. Statistics, 01. Introduction to Statistics]
 tags: [monte carlo method, inverse cdf, rejection sampling, importance sampling, statistics]
 math: true
 ---
