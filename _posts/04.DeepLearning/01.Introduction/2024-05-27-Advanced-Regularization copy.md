@@ -13,9 +13,9 @@ math: true
 ## Data Augmentation
 Deep learning 뿐만 아니라 모든 machine learning에서 test error를 낮추는 가장 좋은 방법은 다양한 데이터를 더 많이 학습하는 것이다.
 
-**Data augmentation**은 기존 data를 기반으로 새로운 (fake) data를 만들고, 이를 training data에 포함하는 방법이다.
+**Data augmentation**은 기존 data를 기반으로 새로운 (fake) data를 만들고, 이를 training data에 포함하는 방법이다. Data augmentation은 object recognition 문제에 특히 효과적이라는 것이 알려져 있다.
 
-> Data augmentation은 object recognition 문제에 특히 효과적이다.
+> Training data의 양을 늘리려고 한다면, log-scale (2x, 4x, 8x, ...)로 늘리는 것이 적합하다.
 {: .prompt-tip}
 
 ![](/assets/img/Advanced-Regularization-01.png){: width="650"}
