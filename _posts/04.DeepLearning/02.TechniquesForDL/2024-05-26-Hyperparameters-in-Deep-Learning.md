@@ -1,8 +1,8 @@
 ---
 title: "Hyperparameters in Deep Learning"
 author: rdh
-date: 2024-05-29 02:24:05.607
-categories: [04. Deep Learning, 01. Introduction to Deep Learning]
+date: 2024-05-26 02:24:05.607
+categories: [04. Deep Learning, 02. Techniques for DL]
 tags: [hyperparameter, deep learning]
 math: true
 ---

@@ -2,7 +2,7 @@
 title: "Advanced Regularization"
 author: rdh
 date: 2024-05-27 02:24:05.607
-categories: [04. Deep Learning, 01. Introduction to Deep Learning]
+categories: [04. Deep Learning, 02. Techniques for DL]
 tags: [regularization, dropout, deep learning]
 math: true
 ---

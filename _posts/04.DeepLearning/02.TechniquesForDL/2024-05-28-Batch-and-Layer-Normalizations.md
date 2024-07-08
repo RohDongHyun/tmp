@@ -2,7 +2,7 @@
 title: "Batch and Layer Normalizations"
 author: rdh
 date: 2024-05-28 10:11:58.052
-categories: [04. Deep Learning, 01. Introduction to Deep Learning]
+categories: [04. Deep Learning, 02. Techniques for DL]
 tags: [batch normalization, layer normalization, deep learning]
 math: true
 ---

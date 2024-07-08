@@ -2,7 +2,7 @@
 title: "Transfer Learning"
 author: rdh
 date: 2024-05-30 09:07:26.673
-categories: [04. Deep Learning, 01. Introduction to Deep Learning]
+categories: [04. Deep Learning, 02. Techniques for DL]
 tags: [transfer learning, pretraining, fine-tuning, deep learning]
 math: true
 ---
