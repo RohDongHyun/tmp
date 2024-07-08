@@ -62,3 +62,14 @@ NN의 경우, 같은 작업을 수행하는 서로 다른 모델을 천차만별
 Dropout은 사이즈가 큰 NN 모델에서 practical하게 ensemble을 구현할 수 있게 만드는 방법이 된다. 일반적으로 ensemble을 구현하기 위해서는 각기 다른 모델들을 모두 학습시켜야 하는 어려움이 있지만, dropout을 이용하면 보다 적은 계산 비용으로도 유사한 효과를 낼 수 있다.
 
 ![](/assets/img/Advanced-Regularization-05.png){: width="650"}
+
+
+### Inverted Dropout
+50% dropout을 모델에 적용한다고 하자.
+
+이 때, standard dropout은 training 과정에서 따로 scaling 없이 50% dropout을 수행한다. 이 경우, 50%의 input data가 0으로 바뀐 것과 같은 효과가 나기에, 해당 dropout을 거친 후의 matrix multiplication output은 기존 output의 대략 50% 정도의 값을 갖는다. 이 후 test 과정에서는 dropout을 적용하지 않기 때문에, output이 실제 training에서 학습된 값보다 더 크게 나타날 수 있다. 즉, 50% standard dropout이 적용된 training을 거친 모델에 대해서는 test 과정에서 activation function에 적용하기 전 0.5 (=50%)의 값을 곱해주어야만 training의 결과대로 test를 진행한다.
+
+**Inverted dropout**은 standard dropout에서 output의 크기가 달라지는 현상을 방지하는 dropout 방식으로, training 과정에서 input data에 대해 1/0.5, 즉 2의 값을 모두 곱해준 후 dropout된 layer를 통과시킨다. 즉, 50% dropout으로 인해 상대적으로 작아지는 값의 크기를 input을 미리 키워줌으로써 방지한다. 따라서, inverted dropout이 적용된 모델의 경우 test 과정에 보정을 따로 할 필요가 없다.
+
+> Inverted dropout이 일반적으로 더 common한 setting이다.
+{: .prompt-info}
