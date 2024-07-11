@@ -115,6 +115,11 @@ Time step $t$에서, decoder의 hidden state를 $s_t \in \mathbb{R}^h$라고 하
     [a_t; s_t] \in \mathbb{R}^{2h}
     $$
 
+#### Query, Key, and Value
+Attention 또는 이후에 다룰 self-attention의 내용을 보면, query, key, 그리고 value라는 단어가 자주 등장한다. Query란 현재의 상태나 입력에 대한 질문을, key와 value는 query에 대한 답을 얻기 위해 사용되어지는 key-value pair로 볼 수 있다. 일반적으로 query가 주어지면 우선적으로 key를 조사하여 가장 적합한 (유사한) key를 구하고, 그 key와 연결된 value를 통해 최종적인 값을 얻게된다.
+
+Attention에서의 query, key, value 역시 위와 유사하게 동작한다. Query가 주어지면, 각 key와의 유사도를 구하고, 이를 각 key와 연결된 value와 곱해주고, 그 값들에 대한 합을 통해 query에 대한 답을 얻는다. 즉, attention 모델에서 query는 decoder의 hidden state $s_t$, key와 value는 encoder의 hidden state $h_t$, 그리고 최종적인 결과물은 attention output $a_t$가 되는 것이다.
+
 #### Attention variations
 일반적으로 attention score $e^t$를 구하는 과정은 dot-product를 사용한다. 이를 **basic dot-product attention** 이라고 한다. 하지만, 이 외에도 attention score를 구하는 방법은 다양하게 있으며 여기서는 두 가지 다른 방법을 소개한다.
 
