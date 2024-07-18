@@ -12,7 +12,7 @@ math: true
 ## Model-Free RL
 이전 post ['Solving MDP'](https://rohdonghyun.github.io/posts/Solving-MDP/)를 통해 우리가 MDP를 알고 있는 경우, DP를 이용한 prediction 및 control이 가능하다는 것을 확인했다. 하지만, 우리가 실제 마주하는 문제들의 경우 MDP에 대해서 알 수 없는 경우가 거의 100%이다. 즉, transition probability와 reward 체계에 대해서 미리 알지못한다는 것이다. 우리는 단지 여러번의 경험을 통해 얻은 episode들로써 이를 추정해내어야 한다.
 
-이러한 문제에 대한 강화학습을 **model-free RL**이라고 한다. 여기서는 model-free prediction 방법론에 대해서 다룰 예정으로, 대표적인 알고리즘으로는 **Monte-Carlo (MC) policy evaluation**과 **temporal difference (TD) learning**이 있다.
+이러한 문제에 대한 강화학습을 **model-free RL**이라고 한다. 우선 model-free prediction 방법론에 대해서 다룰 예정으로, 대표적인 알고리즘으로는 **Monte-Carlo (MC) policy evaluation**과 **temporal difference (TD) learning**이 있다.
 
 ## Monte-Carlo Policy Evaluation
 Monte-Carlo (MC) policy evaluation은 model-free prediction 기법으로, 환경과 반복적인 상호작용을 통해 직접 return을 얻어내고, 그 값을 평균내어 value function $V_\pi$를 추정하는 기법이다. Return을 얻기 위해서는 한 episode가 끝나야하기 때문에, value function의 update는 episode가 종료된 이후 이루어진다.
