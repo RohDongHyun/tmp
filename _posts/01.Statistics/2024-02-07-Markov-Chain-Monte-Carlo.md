@@ -9,7 +9,7 @@ math: true
 ## Approximate Bayesian Method
 Bayesian inference를 요약하면 다음과 같다.
 
-* 데이터의 분포에 관한 모형 (likelihood, $L(\theta\mid X))와
+* 데이터의 분포에 관한 모형 (likelihood, $L(\theta\mid X)$)와
 * 모델을 정하는 모수 (parameter)의 사전분포 (prior distribution, $\pi(\theta)$)를 이용하여
 * 모수의 사후확률 (posterior probability, $\pi(\theta\mid X)$)를 구하고,
 * 이를 이용하여 모수에 관한 추론을 진행
@@ -83,7 +83,7 @@ Metropolis-Hastings algorithm 하에서 각 시각 $t$에서 Markov chain의 다
 {: .prompt-info}
 
 ### Example of Metropolis-Hastings Algorithm - Cauchy Model
-$Y_1, \cdots, Y_n \sim i.i.d \ N(\theta, 1)$인 데이터를 생각하자. 이 때, $\theta$의 사전확률로 $\pi_0(\theta) = \frac{1}{\pi(1 + \theta^2)}$를 가정하자 (첫번째 $\pi_0(\cdot)$는 확률밀도함수, 두번째 $\pi$는 원주율). 
+$Y_1, \cdots, Y_n \sim N(\theta, 1)$ (i.i.d)인 데이터를 생각하자. 이 때, $\theta$의 사전확률로 $\pi_0(\theta) = \frac{1}{\pi(1 + \theta^2)}$를 가정하자 (첫번째 $\pi_0(\cdot)$는 확률밀도함수, 두번째 $\pi$는 원주율). 
 
 이 경우, Bayes theorem에 의해 $\theta$의 사후확률은 다음과 같다.
 
@@ -154,7 +154,7 @@ $$
 
 데이터가 정규분포를 따를 때의 $\mu$와 $\sigma^2$에 대해 적절한 사전분포를 이용하여 Gibbs sampling을 통한 Bayesian inference를 해보자.
 
-예를 들어, 각 Lot별 생산된 wafer들의 수율이 정규분포를 따른다고 하자. 이 때, 50개의 Lot을 랜덤 추출했을 때의 Lot 별 수율데이터를 $X_1, \cdots , X_{n=50} \sim i.i.d \, N(\mu, \sigma^2)$이라고 정의하자. 
+예를 들어, 각 Lot별 생산된 wafer들의 수율이 정규분포를 따른다고 하자. 이 때, 50개의 Lot을 랜덤 추출했을 때의 Lot 별 수율데이터를 $X_1, \cdots , X_{n=50} \sim N(\mu, \sigma^2)$ (i.i.d.)이라고 정의하자. 
 
 $\mu$의 사전분포로는 실수 위에서의 균등분포(improper prior), $\sigma^2$의 사전분포로는 Jeffreys' prior인 $1/\sigma^2$를 이용하자.
 
@@ -188,3 +188,35 @@ $\sigma^2$를 추출할때는 shape parameter 가 $n / 2$, scale parameter 가 $
 2. $\mu^{(s)} \sim N\left( \bar{X}, \frac{\sigma^{2(s-1)}}{n} \right)$
 
 3. $\sigma^{2(s)} \sim \text{IGamma} \left( \frac{n}{2}, \frac{1}{2}\sum_{i=1}^n (X_i - \mu^{(s)})^2 \right)$
+
+## Convergence of MCMC
+MCMC의 수렴여부를 나타내는 방법으로는 **Gelman and Rubin 진단**이 주로 사용된다. 이는 체인간(between-chains) 분산과 체인내(within-chain) 분산을
+이용한 진단법이다.
+
+우선 길이가 $N$인 $M>1$개의 chain이 있다고 가정하자.
+
+이 때, 모형의 모수 $\theta$에 대하여 $$\hat{\theta}_m, \hat{\sigma}_m^2$$를 각각 $m$번째 체인으로 구한 표본 사후 평균과 표본 사후 분산이라고 하자. 또, 전체 표본 사후 평균을 $$\hat{\theta} = \frac{1}{M}\sum_{m=1}^M \hat{\theta}_m$$이라 하자.
+
+이 경우, 체인간 분산(B)과 체인내 분산(W)을 다음과 같이 계산한다.
+
+$$
+B = \frac{N}{M-1} \sum_{m=1}^M (\hat{\theta}_m - \hat{\theta})^2, \quad W = \frac{1}{M} \sum_{m=1}^M \hat{\sigma}_m^2
+$$
+
+이후, B와 W을 이용하여 다음의 통계량을 계산한다.
+
+$$
+R = \sqrt{\frac{d + 3 \hat{V}}{d + 1} \frac{\hat{V}}{W}}
+$$
+
+이 때, $\hat{V}$(특정 정상 조건에서 합동 분산)은 다음과 같다.
+
+$$
+\hat{V} = \frac{N-1}{N} W + \frac{M+1}{MN} B, \quad d = \frac{2 \hat{V}^2}{\text{Var}(\hat{V})}
+$$
+
+
+위 통계량 $R$을 **Potential Scale Reduction Factor (PSRF)** 이라고 부른다.
+만약 $M$개의 chain이 목표로 하는 사후 분포로 수렴하면, PSRF의 값은 1에 근접하게 된다.
+
+따라서, 모형의 모든 모수에 대하여 $R < 1.2$를 만족하면 MCMC가 수렴한다고 말할 수 있다.
