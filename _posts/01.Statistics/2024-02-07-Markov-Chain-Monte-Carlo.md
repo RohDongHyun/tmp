@@ -1,9 +1,9 @@
 ---
 title: Markov Chain Monte-Carlo
 author: rdh
-date: 2024-02-06 11:33:00 +0800
+date: 2024-02-07 11:33:00 +0800
 categories: [01. Statistics, 01. Introduction to Statistics]
-tags: [monte carlo method, inverse cdf, rejection sampling, importance sampling, statistics]
+tags: [approximate Bayesian, MCMC, statistics]
 math: true
 ---
 ## Approximate Bayesian Method
