@@ -62,7 +62,7 @@ GAN의 학습은 다음 두 과정을 반복적으로 수행하면서 이루어�
 ![](/assets/img/Generative-Adversarial-Network-GAN-02.png)
 
 ### Conditional GAN
-Generator와 discriminator가 extra information $y$가 주어졌을 때의 모델일 경우, 이를 **condtional GAN**이라고 한다.
+Generator와 discriminator가 extra information $y$가 주어졌을 때의 모델일 경우, 이를 **conditional GAN**이라고 한다.
 
 $$
 \min_G \max_D \mathbb{E}_{x \sim p_{\text{data}}(x)}[\log D(x | y)] + \mathbb{E}_{z \sim p_z(z)}[\log(1 - D(G(z | y)))]
