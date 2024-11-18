@@ -37,7 +37,7 @@ $\forall A_i \cap A_j = \emptyset \ (i \neq j), \ A_1 \cup A_2 \cup \cdots \cup 
 이때, 전확률공식(law of total probability)는 다음과 같다.
 
 $$
-P(B) = P(B|A_1)P(A_1) + \cdots + P(B|A_n)P(A_n)
+P(B) = P(B \vert A_1)P(A_1) + \cdots + P(B \vert A_n)P(A_n)
 $$
 
 ### Independence
