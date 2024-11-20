@@ -79,7 +79,7 @@ The **probability distribution** of a random variable $X$ represents the possibl
 #### Discrete Random Variable
 A **discrete random variable** is one where $X$ can take on discrete values such as $x_1, x_2, x_3, \dots$, providing the corresponding probabilities for each value.
 
-The probability distribution of $X$ is represented by the **probability mass function (pmf)**, denoted as $p(x)$, which is defined as follows:
+The probability distribution of $X$ is represented by the **probability mass function (PMF)**, denoted as $p(x)$, which is defined as follows:
 
 $$
 p(x) = P(X = x) =
@@ -96,7 +96,7 @@ $$
 #### Continous Random Variable
 A **continuous random variable** is one where $X$ can take an uncountably infinite number of values, providing information to calculate the probability of $X$ falling within a specific interval.
 
-The probability distribution is expressed using the **probability density function (pdf)**, $f(x)$, and the probability that $X$ lies within $a \leq X \leq b$ is given by:
+The probability distribution is expressed using the **probability density function (PDF)**, $f(x)$, and the probability that $X$ lies within $a \leq X \leq b$ is given by:
 
 $$
 P(a \leq X \leq b) = \int_{a}^{b} f(x) \, dx
@@ -107,7 +107,7 @@ $$
 * For a continuous random variable, the probability at a single point is zero: $P(X=a)=0$
 
 #### Cumulative Distribution Function (CDF)
-The **cumulative distribution function (CDF)** is another function used to represent a probability distribution, in addition to the pmf or pdf. It is defined as follows (applicable to both discrete and continuous random variables):
+The **cumulative distribution function (CDF)** is another function used to represent a probability distribution, in addition to the PMF or PDF. It is defined as follows (applicable to both discrete and continuous random variables):
 
 $$
 F_X(x) = P(X \leq x)
@@ -205,7 +205,7 @@ When a random variable $X$ is equally likely to take any value between $a$ and $
 * $\text{Var}(X) = \frac{(b-a)^2}{12}$
 
 ### Beta Distribution
-The **beta distribution** is a type of continuous probability distribution for a random variable $X$ where $0 \leq X \leq 1$, and it is defined by the following pdf:
+The **beta distribution** is a type of continuous probability distribution for a random variable $X$ where $0 \leq X \leq 1$, and it is defined by the following PDF:
 
 $$
 f(x) = f(x \mid \alpha, \beta) = \frac{1}{B(\alpha, \beta)} x^{\alpha-1} (1-x)^{\beta-1}, \quad x \in [0,1], \, \alpha > 0, \beta > 0.

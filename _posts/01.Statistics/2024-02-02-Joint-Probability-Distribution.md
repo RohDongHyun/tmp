@@ -8,9 +8,9 @@ math: true
 ---
 ## Joint Probability Distribution
 ### Joint Probability Distribution
-결합분포(Joint Probability Distribution)는 두 개의 확률변수가 취할 수 있는 값들의 모든 쌍의 확률을 나타낸 것이다.
+A **joint probability distribution** represents the probabilities of all possible pairs of values that two random variables can take.
 
-1. 이산형 결합확률질량함수
+1. Discrete joint PMF
 
     $$
     p(x,y) = P(X=x, Y=y)
@@ -20,7 +20,7 @@ math: true
     * $\sum_x\sum_y p(x,y) = 1$
     * $P(a<X\leq b, c<Y\leq d) = \sum_{a<x\leq b}\sum_{c<y\leq d}p(x,y)$
 
-2. 연속형 결합확률밀도함수
+2. Continuous joint PDF
 
     $$
     P(a < X \leq b, c < Y \leq d) = \int_a^b \int_c^d f(x, y) \, dy \, dx
@@ -37,31 +37,31 @@ math: true
 
 
 ### Marginal PDF
-주변확률밀도함수(Marginal PDF)는 다음과 같다.
+The **marginal PDF** is defined as follows:
 
 * $p_X(x) = \sum_y p(x, y)$
 * $f_X(x) = \int f(x, y) \, dy$
 
-두 확률변수 X, Y 가 다음을 만족할때 두 확률변수는 서로 독립이다.
+Two random variables $X$ and $Y$ are independent if the following condition is satisfied:
 
-* 이산형: $p_{X,Y}(x,y) = p_X(x) p_Y(y)$
-* 연속형: $f_{X,Y}(x,y) = f_X(x) f_Y(y)$
-  * X와 Y가 서로 독립이면, $E(XY) = E(X)E(Y)$
+* Discrete: $p_{X,Y}(x,y) = p_X(x) p_Y(y)$
+* Continuous: $f_{X,Y}(x,y) = f_X(x) f_Y(y)$
+  * If $X$ and $Y$ are independent, $E(XY) = E(X)E(Y)$
 
 ### Covariance and Correlation Coefficient
-* 공분산(Covariance)
+* **Covariance**
 
     $$
     Cov(X, Y) = E[(X - \mu_X)(Y - \mu_Y)] = E(XY) - \mu_X \mu_Y = E(XY) - E(X)E(Y)
     $$
 
-* 상관계수(Correlation coefficient) - 선형의 연관성을 나타냄
+* **Correlation coefficient** - the linear relationship between two variables
 
     $$
     Corr(X, Y) = \rho_{XY} = \frac{Cov(X, Y)}{sd(X) sd(Y)}
     $$
 
-확률변수 X, Y에 대해 다음과 같은 성질들이 있다.
+The following properties hold for the random variables $X$ and $Y$:
 
 * $Cov(aX + b, cY + d) = ac \, Cov(X, Y)$
 
@@ -73,60 +73,60 @@ math: true
 
 * $-1 \leq \rho \leq 1$
 
-* $Y = a + bX$이면 $\rho = \pm 1$
+* If $Y = a + bX$, then $\rho = \pm 1$.
 
-확률변수 X, Y가 독립일 경우,
+When random variables $X$ and $Y$ are independent,
 
 * $E(XY) = E(X)E(Y)$
 
 * $E[g(X)h(Y)] = E[g(X)]E[h(Y)]$
 
 * $Cov(X, Y) = 0, \, Corr(X, Y) = 0$
-  * 주의: $Cov(X, Y) = 0$인 것이 $X, Y$의 독립을 의미하지 않음
+  * Note: $Cov(X, Y) = 0$ does not imply that $X$ and $Y$ are independent.
 
 * $Var(X \pm Y) = Var(X) + Var(Y)$
 
 ### Conditional Probability Distribution
-조건부 확률분포(Conditional Probability Distribution)는 두개의 확률변수가 있을 때, 하나의 확률변수의 값이 주어졌을때, 나머지 하나의 확률변수의 확률분포를 말한다.
+A **conditional probability distribution** refers to the probability distribution of one random variable given the value of another random variable.
 
-1. 이산 확률변수  
-    두개의 이산 확률변수 X, Y에 대하여 X = x가 주어졌을때의 Y의 확률질량함수:
+1. Discrete random variables
+    For two discrete random variables $X$ and $Y$, the PMF of $Y$ given $X=x$ is:
 
     $$
     p(y \mid x) = P(Y = y \mid X = x) = \frac{P(X = x, Y = y)}{P(X = x)}
     $$
 
-    $p(y \mid x)$는 $X = x$로 고정 되어있을 때의 Y의 확률질량함수이다.
+    Here, $p(y \mid x)$ represents the PMF of $Y$ when $X = x$ is fixed.
 
-2. 연속 확률변수  
-    두개의 연속 확률변수 X, Y에 대하여 $X = x$가 주어졌을 때의 Y의 확률밀도함수:
+2. Continuous random variables
+    For two continuous random variables $X$ and $Y$, the PDF of $Y$ given $X=x$ is:
 
     $$
     f(y \mid x) = \frac{f(x,y)}{f(x)}
     $$
 
-    $f(y \mid x)$는 $X = x$가 고정되어 있을 때의 Y의 확률밀도함수이다.
+    Here, $f(y \mid x)$ represents the PDF of $Y$ when $X = x$ is fixed.
 
-    * 하나가 이산 확률변수이고, 다른 하나가 연속 확률변수여도 잘 정의 될 수 있다.
+    * If one variable is discrete and the other is continuous, the conditional distribution can still be well-defined.
 
 ### Conditional Independence
-두 확률변수 X, Y가 또 다른 확률변수 Z가 주어졌을때 서로 독립인 경우 X, Y는 조건부 독립(Conditional Independence)이라고 부른다.
+Two random variables $X$ and $Y$ are said to be **conditionally independent** given another random variable $Z$ if $X$ and $Y$ are independent when $Z$ is known.
 
-즉, 모든 $x, y, z$에 대하여, $p(x, y \mid z) = p(x \mid z)p(y \mid z)$ 또는 $f(x, y \mid z) = f(x \mid z) f(y \mid z)$ 이다.
+Therefore, for every $x, y, z$, $p(x, y \mid z) = p(x \mid z)p(y \mid z)$ or $f(x, y \mid z) = f(x \mid z) f(y \mid z)$ hold.
 
-* $X \perp Y \mid Z$ 로 표시한다.
+* It is denoted as $X \perp Y \mid Z$.
 
 ## Random Vectors
 
-각 원소 $X_i$가 확률변수인 크기가 $p \times 1$인 (열)벡터 $\mathbf{X} = (X_1, \cdots, X_p)^T$를 확률벡터(random vector)라고 부른다.
+A size $p \times 1$ (column) vector $\mathbf{X} = (X_1, \cdots, X_p)^T$, where each element $X_i$ is a random varaible, is called a **random vector**.
 
-* 확률벡터의 확률분포 - 결합확률분포(joint probability distribution)
+The probability distribution of a random vector is referred to as its **joint probability distribution**.
 
-* 결합확률질량함수(joint probability mass function): $p_{X_1, \cdots, X_p}(x_1, \cdots, x_p)$
+* Joint PMF: $p_{X_1, \cdots, X_p}(x_1, \cdots, x_p)$
 
-* 결합확률밀도함수(joint probability density function): $f_{X_1, \cdots, X_p}(x_1, \cdots, x_p)$
+* Joint PDF: $f_{X_1, \cdots, X_p}(x_1, \cdots, x_p)$
 
-* 결합누적확률분포(joint cumulative distribution function): $F_{X_1, \cdots, X_p}(x_1, \cdots, x_p) = P(X_1 \leq x_1, \cdots, X_p \leq x_p)$
+* Joint CDF: $F_{X_1, \cdots, X_p}(x_1, \cdots, x_p) = P(X_1 \leq x_1, \cdots, X_p \leq x_p)$
 
 ### Mean of Random Vectors
 
@@ -138,13 +138,13 @@ $$
 
 ### Covariance Matrix
 
-확률벡터 $\mathbf{X}$의 공분산 행렬 (covariance matrix) $\Sigma$는 다음과 같이 정의한다.
+The **covariance matrix** $\Sigma$ of a random vector $\mathbf{X}$ is defined as:
 
 $$
-cov(\mathbf{X}) = E((\mathbf{X} - \mu)(\mathbf{X} - \mu)^T)
+cov(\mathbf{X}) = E((\mathbf{X} - \mu)(\mathbf{X} - \mu)^T).
 $$
 
-$var(X_i) = \sigma_i^2, \, cov(X_i, X_j) = \sigma_{ij}$ 라고 하고, $\sigma_{ii} = \sigma_i^2$ 라고 하자. 그러면, 공분산 행렬은 다음과 같이 표현된다.
+Let $var(X_i) = \sigma_i^2, \, cov(X_i, X_j) = \sigma_{ij}$, and $\sigma_{ii} = \sigma_i^2$. Then, the covariance matrix $\Sigma$ can be expressed as:
 
 $$
 \Sigma = cov(\mathbf{X}) = \begin{pmatrix}
@@ -165,7 +165,7 @@ $$
 * CDF: $F_{X_i}(x_i) = \lim_{x_j \to \infty, j \neq i} F(x_1, \cdots, x_p)$
 
 ### Conditional PMF
-이산인 확률변수 $X_1, \cdots, X_p$에 대하여 $X_1 = x_1, \cdots, X_k = x_k$, $(k < p)$가 주어졌을때의 $X_{k+1}, \cdots, X_p$의 확률질량함수:
+For discrete random variables $X_1, \cdots, X_p$, given $X_1 = x_1, \cdots, X_k = x_k$ where $k < p$, the PMF of $X_{k+1}, \cdots, X_p$ is expressed as:
 
 $$
 p(x_{k+1}, \cdots, x_p \mid x_1, \cdots, x_k)
@@ -179,10 +179,10 @@ $$
 = \frac{P(X_1 = x_1, \cdots, X_p = x_p)}{P(X_1 = x_1, \cdots, X_k = x_k)}
 $$
 
-* $p(x_{k+1}, \cdots, x_p \mid x_1, \cdots, x_k)$는 확률질량함수이다.
+* $p(x_{k+1}, \cdots, x_p \mid x_1, \cdots, x_k)$ is the PMF.
 
 ### Conditional PDF
-연속인 확률변수 $X_1, \cdots, X_p$에 대하여 $X_1 = x_1, \cdots, X_k = x_k$가 주어졌을때의 $X_{k+1}, \cdots, X_p$의 확률밀도함수:
+For continuous random variables $X_1, \cdots, X_p$, given $X_1 = x_1, \cdots, X_k = x_k$ where $k < p$, the PDF of $X_{k+1}, \cdots, X_p$ is expressed as:
 
 $$
 f(x_{k+1}, \cdots, x_p \mid x_1, \cdots, x_k)
@@ -192,35 +192,35 @@ $$
 = \frac{f(x_1, \cdots, x_p)}{f(x_1, \cdots, x_k)}
 $$
 
-* $f(x_{k+1}, \cdots, x_p \mid x_1, \cdots, x_k)$는 확률밀도함수이다.
-* 이산 확률변수와 연속 확률변수가 섞여있어도 조건부 확률분포를 얘기할 수 있다.
+* $f(x_{k+1}, \cdots, x_p \mid x_1, \cdots, x_k)$ is the PDF.
+* Even when discrete and continuous random variables are mixed, it is still possible to say conditional probability distribution.
 
 ### Independence
-확률변수 $X_1, \cdots, X_p$가 다음을 만족할 때 서로 독립이다:
+Random variables $X_1, \cdots, X_p$ are mutually independent if the following condition is satisfied:
 
-모든 $x_1, \cdots, x_p$에 대해,
-
-$$
-p(x_1, \cdots, x_p) = p_{X_1}(x_1) \cdots p_{X_p}(x_p) \, (\text{이산형})
-$$
+For all possible values of $x_1, \cdots, x_p$,
 
 $$
-f(x_1, \cdots, x_p) = f_{X_1}(x_1) \cdots f_{X_p}(x_p) \, (\text{연속형})
+p(x_1, \cdots, x_p) = p_{X_1}(x_1) \cdots p_{X_p}(x_p) \, (\text{discrete})
 $$
 
-* $X_1, \cdots, X_p$가 서로 독립이면, $E(X_1 \cdots X_p) = E(X_1) \cdots E(X_p)$
+$$
+f(x_1, \cdots, x_p) = f_{X_1}(x_1) \cdots f_{X_p}(x_p) \, (\text{continuous})
+$$
+
+* If $X_1, \cdots, X_p$ are mutually independent, then $E(X_1 \cdots X_p) = E(X_1) \cdots E(X_p)$.
 
 ## Examples of Multivariate Probability Distribution
 ### Multinomial Distribution
-다항 분포 (Multinomial Distribution)는 독립시행에서 나오는 결과 (outcome)가 두 가지 이상일 때를 모형화 한 것이다.
+The **multinomial distribution** models outcomes when there are more than two possible results for each trial in a series of independent experiments.
 
-k의 서로 다른 결과가 나오는 독립시행을 n번 시도 하였을때 각각의 결과가 나오는 횟수를 Xj라고 하자. 즉, $X_j$ 는 n번의 독립 시행에서 범주 j가 나온 횟수이다. 즉, $X_1 + \dots + X_k = n$이다.
+Let $X_j$ represent the number of times the $j$-th category occurs in $n$ independent trials. That is, $X_j$ is the count of category $j$ out of $n$ trials, such that $X_1 + \dots + X_k = n$.
 
-한번의 시행에서 j번째 범주가 나올 확률을 $p_j$라고 하자. 즉, $p_1 + \dots + p_k = 1$이다.
+Let $p_j$ denote the probability of the $j$-th category occurring in a single trial, where $p_1 + \dots + p_k = 1$.
 
-이 때, 각 범주별로 나오는 횟수 $(X_1, \dots , X_k)$ 는 다항분포 (multinomial distribution)을 따르고 다음과 같이 표시한다: $\mathbf{X} = (X_1, \cdots, X_k) \sim \text{Multi}(n, (p_1, \cdots, p_k))$
+Then, the counts for each category, $\mathbf{X} = (X_1, \dots , X_k)$, follow a multinomial distribution, denoted as $\mathbf{X} \sim \text{Multi}(n, (p_1, \cdots, p_k))$.
 
-* 다항분포의 확률질량함수는 다음과 같다.
+* The PMF of multinomial distribution is given by:
 
     $$
     p(n_1, \cdots, n_k) = p(n_1, \cdots, n_k \mid \mathbf{p})
@@ -232,12 +232,16 @@ k의 서로 다른 결과가 나오는 독립시행을 n번 시도 하였을때 
 
     * $\mathbf{p} = (p_1, \cdots, p_k)$
 
-* 이항분포의 확장으로 볼 수 있다. $k = 2$이면 다항분포는 이항분포와 같다.
+* The multinomial distribution can be seen as an extension of the binomial distribution. When $k = 2$, the multinomial distribution reduces to the binomial distribution.
 
-* $E(X_j) = np_j, \, var(X_j) = np_j(1 - p_j), \, cov(X_j, X_{j'}) = -np_jp_{j'}$
+* $E(X_j) = np_j$
+* $var(X_j) = np_j(1 - p_j)$
+* $Cov(X_j, X_{j'}) = -np_jp_{j'}$
 
 ### Dirichlet Distribution
-디리클레 분포(Dirichlet Distribution)는 연속 확률분포중의 하나로, $0 \leq X_j \leq 1$이면서 $\sum_{j=1}^k X_j = 1$을 만족하는 확률변수들의 벡터 $\mathbf{X} = (X_1, \cdots, X_k)$ $(k \geq 2)$가 다음의 확률밀도함수를 가지는 경우이다.
+The **Dirichlet distribution** is a continuous probability distribution for a vector of random variables $\mathbf{X} = (X_1, \cdots, X_k)$ $(k \geq 2)$, where $0 \leq X_j \leq 1$ and $\sum_{j=1}^k X_j = 1$.
+
+The PDF is defined as:
 
 $$
 f(x_1, \cdots, x_k) = f(x_1, \cdots, x_k \mid \alpha) = \frac{1}{B(\alpha)} \prod_{j=1}^k x_j^{\alpha_j - 1},
@@ -247,17 +251,17 @@ $$
 x_j \in [0, 1], \sum_j x_j = 1, \alpha = (\alpha_1, \cdots, \alpha_k).
 $$
 
-$\alpha_j > 0$은 확률밀도함수를 정하는 모수(parameter)이고,
+$\alpha_j > 0$ are the parameters that define the PDF.
 
 $$
-B(\alpha) = \frac{\prod_{j=1}^k \Gamma(\alpha_j)}{\Gamma(\sum_j \alpha_j)} \text{는 정규화 상수 (normalized constant)이다.}
+B(\alpha) = \frac{\prod_{j=1}^k \Gamma(\alpha_j)}{\Gamma(\sum_j \alpha_j)} \quad \text{(normalized constant)}
 $$
 
-* $\mathbf{X} \sim \text{Dir}(\alpha)$로 나타낸다.
+* It is denoted as $\mathbf{X} \sim \text{Dir}(\alpha)$.
 
 * $E(X_j) = \alpha_j / \sum_i \alpha_i$
 
-* $k = 2$이면 디리클레분포는 베타분포와 같다.
+* When $k = 2$, the Dirichlet distribution reduces to the Beta distribution.
 
 ### Multivariate Gaussian Distribution
 각 원소가 가우시안 분포 (정규분포)를 따르는 확률벡터의 분포를 다변량 가우시안분포(Multivariate Gaussian Distribution)라고 한다.
