@@ -264,9 +264,9 @@ $$
 * When $k = 2$, the Dirichlet distribution reduces to the Beta distribution.
 
 ### Multivariate Gaussian Distribution
-각 원소가 가우시안 분포 (정규분포)를 따르는 확률벡터의 분포를 다변량 가우시안분포(Multivariate Gaussian Distribution)라고 한다.
+The distribution of a random vector, where each element follows a Gaussian (normal) distribution, is called a **multivariate Gaussian distribution**.
 
-* 가우시안 확률벡터 (크기 $p$)의 확률밀도함수는 다음과 같이 정의된다.
+* The PDF of a Gaussian random vector of size $p$ is defined as:
 
     $$
     f(x_1, \cdots, x_p)
@@ -280,27 +280,29 @@ $$
     = (2\pi)^{-\frac{p}{2}} \lvert \Sigma \rvert^{-\frac{1}{2}} \exp \left( -\frac{1}{2} (\mathbf{x} - \mu)^T \Sigma^{-1} (\mathbf{x} - \mu) \right),
     $$
 
-    * $\vert \Sigma \vert$는 $\Sigma$의 행렬식 (determinant)이다.
+    * $\vert \Sigma \vert$ is the determinant of $\Sigma$.
 
-* $\mathbf{X} \sim N_p(\mu, \Sigma)$로 나타낸다.
+* The multivariate Gaussian distribution is denoted as $\mathbf{X} \sim N_p(\mu, \Sigma)$.
 
-* 각 원소가 표준정규분포이고 서로 독립이면, $\mathbf{Z} \sim N_p(0, I)$로 표현된다. $I$는 단위행렬 (identity matrix)이다.
+* If each element follows a standard normal distribution and the elements are independent, then $\mathbf{Z} \sim N_p(0, I)$, where $I$ is the identity matrix.
 
-* $\Sigma$는 일반적으로 양의 정 부호 행렬 (positive definite matrix)이다.
+* The covariance matrix $\Sigma$ is generally positive definite.
 
-* 양의 정부호 행렬은 Cholesky decomposition에 의해 $\Sigma = AA^T$로 표현되고 표준정규분포 벡터 $\mathbf{Z}$를 이용하면 $\mathbf{AZ} + \mu \sim N(\mu, \Sigma)$임을 알 수 있다.
+* A positive definite matrix can be expressed as $\Sigma = AA^T$ via Cholesky decomposition, and using a standard normal vector $\mathbf{Z}$, it follows $\mathbf{AZ} + \mu \sim N(\mu, \Sigma)$.
 
-* $\sigma_{ij} = E((X_i - \mu_i)(X_j - \mu_j)) = 0$ 이면, 즉 $\Sigma$ 의 $(i,j)$ 원소가 0 이면, $X_i, X_j$ 는 서로 독립이다.
+* If $\sigma_{ij} = E((X_i - \mu_i)(X_j - \mu_j)) = 0$, *i.e.*, the $(i,j)$-th element of $\Sigma$ is zero, then $X_i$ and $X_j$ are independent.
 
-  * 따라서, 서로 독립인 가우시안 확률변수로 이루어진 다변량 가우시안 확률벡터의 공분산 행렬은 대각행렬이다. 즉, $\Sigma = \text{diag}(d_1, \cdots, d_p)$.
+  * Consequently, the covariance matrix of a multivariate Gaussian random vector composed of independent Gaussian random variables is diagonal: $\Sigma = \text{diag}(d_1, \cdots, d_p)$.
 
-* $a_1X_1 + \cdots + a_pX_p$ (적어도 하나의 $a_i$가 0이 아닌 경우)는 가우시안분포(정규분포)를 따른다.
+* A linear combination of Gaussian random variables $a_1X_1 + \cdots + a_pX_p$ (where at least one $a_i \neq 0$) also follows a Gaussian distribution.
 
-* $X_1, \cdots, X_p$중에 $k \, (k \leq p)$개의 원소를 뽑아 만든 벡터 $\mathbf{X}_s = (X_{i_1}, \cdots, X_{i_k})$도 가우시안분포를 따른다.
+* For $X_1, \cdots, X_p$, if $k \, (k \leq p)$ components are selected to form a vector $\mathbf{X}_s = (X_{i_1}, \cdots, X_{i_k})$, then $\mathbf{X}_s$ also follows a Gaussian distribution.
 
-* $$\mathbf{X}_s \sim N_s(\mu_s, \Sigma_s), \mu_s = (\mu_{i_1}, \dots, \mu_{i_k})^T, \Sigma_s$$의 $(l, m)$ 원소는 $\sigma_{i_l, i_m}$ 이다.
+* Specifically, $\mathbf{X}_s \sim N_s(\mu_s, \Sigma_s)$, where:
+  * $\mu_s = (\mu_{i_1}, \dots, \mu_{i_k})^T$,
+  * The $(l, m)$-th element of $\Sigma_s$ is $\sigma_{i_l, i_m}$.
 
-* $p = 2$인 경우, 이변량 가우시안 (bivariate Gaussian) 분포이며, 확률밀도함수는 다음과 같이 상관계수를 포함한 5개의 모수로 표현 할 수도 있다. 이때, $\sigma_{12} = \rho \sigma_1 \sigma_2$이다.
+* When $p = 2$, the distribution becomes a **bivariate Gaussian distribution**, and its PDF can be expressed using five parameters, including the correlation coefficient $\rho$, where $\sigma_{12} = \rho \sigma_1 \sigma_2$.
 
 $$
 f(x_1, x_2)
@@ -309,127 +311,167 @@ $$
 
 
 ### Partitioned Gaussian Distribution
-가우시안 확률벡터의 일부로 만든 벡터의 분포를 분할 가우시안 분포 (Partitioned Gaussian Distribution)라고 하며, 평균벡터와 공분산 행렬은 원 확률벡터의 평균벡터와 공분산행렬을 분할하여 표현할 수 있다.
+A vector formed by selecting a subset of components from a Gaussian random vector is referred to as a **partitioned Gaussian distribution**. Its mean vector and covariance matrix can be expressed as partitions of the mean vector and covariance matrix of the original random vector.
 
-$\mathbf{X} = (X_1, \cdots, X_p)^T \sim N_p(\mu, \Sigma)$일 때, $$\mathbf{X} = (\mathbf{X}_1^T, \mathbf{X}_2^T)^T$$로 나누어진다고 하자. 편의상 $$\mathbf{X}_1 = (X_1, \cdots, X_m)^T, \mathbf{X}_2 = (X_{m+1}, \cdots, X_p)^T$$라고 하자. 실제로는 순서상관없이 두개의 그룹으로 묶어도 된다.
+Given $\mathbf{X} = (X_1, \cdots, X_p)^T \sim N_p(\mu, \Sigma)$, let $\mathbf{X}$ be partitioned as:
 
-이때, $$\mathbf{X}_1 \sim N_m(\mu_1, \Sigma_{11}), \, \mu = (\mu_1^T, \mu_2^T)^T,
+$$
+\mathbf{X} = (\mathbf{X}_1^T, \mathbf{X}_2^T)^T.
+$$
+
+where:
+
+$$
+\mathbf{X}_1 = (X_1, \cdots, X_m)^T, \mathbf{X}_2 = (X_{m+1}, \cdots, X_p)^T.
+$$
+
+For convenience, we assume $\mathbf{X}_1$ and $\mathbf{X}_2$ are grouped based on indices, but in practice, the components can be grouped into two arbitrary subsets regardless of order.
+
+Then, 
+
+$$
+\mathbf{X}_1 \sim N_m(\mu_1, \Sigma_{11}), \, \mu = (\mu_1^T, \mu_2^T)^T,
 \Sigma = \begin{pmatrix}
 \Sigma_{11} & \Sigma_{12} \\
 \Sigma_{21} & \Sigma_{22}
-\end{pmatrix}$$
+\end{pmatrix}
+$$
 
 #### Conditional Partitioned Gaussian Distribution
 
-$\mathbf{X}_2 = \mathbf{a}$로 주어졌을때 $\mathbf{X}_1$의 조건부 확률분포는
+The conditional distribution of $\mathbf{X}_1$ given $\mathbf{X}_2 = \mathbf{a}$ for the partitioned Gaussian vector is:
 
 $$
 \mathbf{X}_1 \mid \mathbf{X}_2 = \mathbf{a} \sim N_m \left( \mu_1 + \Sigma_{12} \Sigma_{22}^{-1} (\mathbf{a} - \mu_2), \Sigma_{11} - \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21} \right)
 $$
 
-$\mathbf{X} = (\mathbf{X}_1, \mathbf{X}_2)$일때, 즉 이변량 가우시안 일때,
+For the bivariate Gaussian distribution $\mathbf{X} = (\mathbf{X}_1, \mathbf{X}_2)$, the conditional distribution of $\mathbf{X}_1$ given $\mathbf{X}_2 = \mathbf{a}$ is:
 
 $$
 \mathbf{X}_1 \mid \mathbf{X}_2 = a \sim N \left( \mu_1 + \frac{\sigma_1}{\sigma_2} \rho (a - \mu_2), (1 - \rho^2) \sigma_1^2 \right)
 $$
 
-### Mixure Distribution
-여러개의 분포의 선형결합으로 이루어진 분포를 혼합분포(Mixure Distribution)라고 한다.
+### Mixture Distribution
+A **mixture distribution** is a distribution formed by a linear combination of multiple component distributions.
 
-이산확률분포에서는 $k$개의 이산확률분포의 선형결합으로 이루어진 다음과 같은 확률질량함수를 가진다.
+For discrete probability distributions, the mixture distribution is represented by the following probability mass function:
 
 $$
 p(x) = w_1 p_1(x) + \cdots + w_k p_k(x) = \sum_{i=1}^k w_i p_i(x)
 $$
 
-이때 $p_k(x)$는 확률질량함수이고, $w_i \geq 0, \sum w_i = 1$을 만족한다.
+where $p_i(x)$ are the PMFs of the individual components, and $w_i \geq 0, \sum w_i = 1$.
 
-연속확률분포에서는 다음과 같은 확률밀도함수를 가진다.
+For continuous probability distributions, the mixture distribution is represented by the following PDF:
 
 $$
 f(x) = w_1 f_1(x) + \cdots + w_k f_k(x) = \sum_{i=1}^k w_i f_i(x).
 $$
 
-#### Gaussian Mixure Distribution
-$f_i$들이 가우시안 확률밀도함수인 경우 가우시안 혼합분포(Gaussian Mixure Distribution)라고 한다.
+#### Gaussian Mixture Distribution
+When the components $f_i$ are Gaussian PDFs, the resulting distribution is called a **Gaussian mixture distribution**.
 
-$\phi(x)$를 표준정규분포의 확률밀도함수라고 하자. 즉,
-
-$$
-\phi(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}x^2}.
-$$
-
-$X \sim N(\mu, \sigma^2)$인 경우, $X$의 확률밀도함수는 $\frac{1}{\sigma}\phi\left(\frac{X - \mu}{\sigma}\right)$로 표현할 수 있다.
-
-이 경우 $k$개의 구성원을 가지는 가우시안 혼합 분포의 확률밀도함수는 다음과 같이 쓸 수 있다.
+Let $\phi(x)$ represent the PDF of a standard normal distribution, defined as:
 
 $$
-f(x) = \sum_{i=1}^k w_i \frac{1}{\sigma_i} \phi\left(\frac{x - \mu_i}{\sigma_i}\right).
+\phi(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}x^2}
 $$
 
-* $k = 2$인 경우 $f(x) = w_1 \frac{1}{\sigma_1} \phi\left(\frac{x - \mu_1}{\sigma_1}\right) + (1 - w_1) \frac{1}{\sigma_2} \phi\left(\frac{x - \mu_2}{\sigma_2}\right)$
+For $X \sim N(\mu, \sigma^2)$, the PDF of $X$ can be expressed as: 
 
-* $X_1, \cdots, X_n \overset{i.i.d.}{\sim} f(x) = \sum_{i=1}^k w_i \frac{1}{\sigma_i} \phi\left(\frac{x - \mu_i}{\sigma_i}\right)$, 즉, 가우시안 혼합 분포를 따르는 랜덤 추출된 데이터가 있다고 할때, 각 $X_j$는 $w_i$의 확률로 $N(\mu_i, \sigma_i^2)$을 따른다고 해석할 수 있다.
+$$
+\frac{1}{\sigma}\phi\left(\frac{X - \mu}{\sigma}\right)
+$$
 
-* 군집분석의 모델로 사용할 수 있다.
+The PDF of a Gaussian mixture distribution with $k$ components is then:
+
+$$
+f(x) = \sum_{i=1}^k w_i \frac{1}{\sigma_i} \phi\left(\frac{x - \mu_i}{\sigma_i}\right),
+$$
+
+where $w_i \geq 0$ and $\sum_{i=1}^k w_i = 1$.
+
+* For $k = 2$, the Gaussian mixture density function becomes:
+  
+    $$
+    f(x) = w_1 \frac{1}{\sigma_1} \phi\left(\frac{x - \mu_1}{\sigma_1}\right) + (1 - w_1) \frac{1}{\sigma_2} \phi\left(\frac{x - \mu_2}{\sigma_2}\right)
+    $$
+
+* If $X_1, \cdots, X_n \overset{i.i.d.}{\sim} f(x) = \sum_{i=1}^k w_i \frac{1}{\sigma_i} \phi\left(\frac{x - \mu_i}{\sigma_i}\right)$, then each $X_j$ can be interpreted as following $N(\mu_i, \sigma_i^2)$ with probability $w_i$.
+
+* This model can be used for clustering analysis.
 
 ![](/assets/img/joint-probability-distribution-01.png){: width="650"}
 
-* 왼쪽: 파란선 $N(−1, 1^2)$, 빨간선 $N(2, 2^2)$
-* 오른쪽: 파란점선 $0.5 \times N(−1, 1^2)$, 빨간점선 $0.5 \times N(2, 2^2)$ -> 까만선: $0.5 \times N(−1, 1^2) + 0.5 \times N(2, 2^2)$
+* Left plot
+  * Blue line: $N(−1, 1^2)$
+  * Red line: $N(2, 2^2)$
+* Right plot
+  * Blue dashed line: $0.5 \times N(−1, 1^2)$
+  * Red dashed line: $0.5 \times N(2, 2^2)$
+  * Black line: $0.5 \times N(−1, 1^2) + 0.5 \times N(2, 2^2)$
 
 ## Sample Distribution
 ### Distribution of Sample Mean
-표본평균 (sample mean), $\bar{X}$은 표본의 중심경향성을 나타내는 통계량이다.
+The **sample mean** $\bar{X}$ is a statistics representing the central tendency of samples.
 
-* 모집단의 평균 (모평균)을 $\mu$라고 하면, 표본평균은 $\mu$의 추정량 (estimator)이다.
+* If the population mean is $\mu$, the sample mean serves as an estimator of $\mu$.
 
-* 표본 $\{X_1, X_2, \cdots, X_n\}$가 모평균 $\mu$, 모분산 $\sigma^2$인 모집단에서 추출된 랜덤표본일때,
+* For a random sample $\{X_1, X_2, \cdots, X_n\}$ drawn from a population with mean $\mu$ and variance $\sigma^2$, the sample mean is defined as:
 
     $$
     \bar{X} = \frac{1}{n} \sum_{i=1}^n X_i.
     $$
 
-* 무한모집단에서 추출된 랜덤표본일 경우,
+* For an infinite population:
 
     $$
     E(\bar{X}) = \mu, \, Var(\bar{X}) = \frac{\sigma^2}{n}, \, sd(\bar{X}) = \frac{\sigma}{\sqrt{n}}
     $$
 
-* 크기가 $N$인 유한모집단에서 추출된 랜덤표본일 경우,
+* For a finite population of size $N$:
 
     $$
     E(\bar{X}) = \mu, \, Var(\bar{X}) = \frac{N - n}{N - 1} \cdot \frac{\sigma^2}{n}.
     $$
 
 ### Law of Large Numbers (LLN)
-큰 수의 법칙(Law of Large Numbers, LLN)은 표본의 크기 n 이 커질수록 표본평균의 분산은 0에 가까워진다는 것을 말한다. 
+The **law of large numbers (LLN)** states that as the sample size $n$ increases, the variance of the sample mean $\bar{X}$ approaches zero.
 
-표본평균의 기대값은 모평균과 같고, 분산이 작아지므로, $\bar{X}$는 모평균 $\mu$의 근처에 밀집되어 분포함을 알 수 있다. 이러한 결과를 큰수의 법칙이라고 한다.
+Since the expected value of the sample mean equals the population mean and the variance decreases as $n$ grows, $\bar{X}$ becomes increasingly concentrated around the population mean $\mu$. This phenomenon is what is referred to as the LLN.
 
 ![](/assets/img/joint-probability-distribution-02.png){: width="650"}
 
 ### Central Limit Theorem (CLT)
-중심극한정리(Central Limit Theorem, CLT)는 임의의 모집단에 대해 $\frac{\bar{X} - \mu}{\sigma / \sqrt{n}}$의 분포는 표준정규분포 $N(0, 1)$에 근사한다는 것을 말한다.
+The **central limit theorem (CLT)** states that for any population distribution, the distribution of 
 
-유한모집단의 경우, 모집단의 크기 $N$과 표본의 크기 $n$이 충분히 크면(단 $N \gg n$) $\frac{N - n}{N - 1}$의 값이 1에 근사하므로, 위의 성질이 성립한다.
+$$
+\frac{\bar{X} - \mu}{\sigma / \sqrt{n}}
+$$
 
-중심극한정리를 통해, 모집단의 분포가 어떤 형태이든지 표본의 크기가 크면 표본평균의 분포를 정규분포로 근사할 수 있다.
+approaches the standard normal distribution $N(0, 1)$ as $n$ becomes large.
 
-* 즉, $\bar{X}$의 분포 $\approx N \left( \mu, \frac{\sigma^2}{n} \right)$.
+In the case of a finite population, if the population size $N$ and sample size $n$ are sufficiently large (with $N \gg n$), the value of $\frac{N - n}{N - 1}$ approximates 1, allowing the property to hold.
+
+The CLT implies that regardless of the shape of the population distribution, as the sample size increases, the distribution of the sample mean $\bar{X}$ can be approximated by a normal distribution.
+
+* Specifically, the distribution of $\bar{X}$ is approximately:
+  
+    $$
+    \bar{X} \sim N \left( \mu, \frac{\sigma^2}{n} \right).
+    $$
 
 ![](/assets/img/joint-probability-distribution-03.png){: width="650"}
 
 #### Normal Approximation Using the Binomial Distribution
-$X_1, X_2, \cdots, X_n$이 성공률이 $p$인 베르누이분포를 따르는 무한모집단의 랜덤표본이라고 하자. 이 경우, $S = \sum_{i=1}^n X_i$은 이항분포 $B(n, p)$을 따른다.
+Let $X_1, X_2, \cdots, X_n$ be a random sample from a n infinite population following a Bernoulli distribution with success probability $p$. In this case, the sum $S = \sum_{i=1}^n X_i$ follows a binomial distribution $B(n, p)$.
 
-중심극한정리를 적용하면, $n$이 충분히 클 때
+By applying the CLT, for sufficiently large $n$:
 
 $$
 \frac{S - np}{\sqrt{np(1 - p)}} = \frac{\hat{p} - p}{\sqrt{p(1 - p)/n}}
 $$
 
-의 분포는 표준정규분포 $N(0, 1)$에 근사한다.
-($\hat{p}$= 베르누이분포의 표본비율 $\frac{S}{n}$)
+follows an approximate standard normal distribution $N(0, 1)$, where $\hat{p}=\frac{S}{n}$ is the sample proportion for the Bernoulli distribution.
 
-즉, $n$이 충분히 크고, $np$가 적당한 값이면, $B(n, p)$를 이용하는 확률계산을 $N(np, np(1 - p))$를 이용하여 근사할 수 있다.
+Thus, if $n$ is sufficiently large and $np$ is a reasonable value, probability calculations involving $B(n, p)$ can be approximated using a normal distribution $N(np, np(1 - p))$.
