@@ -52,7 +52,11 @@ Two random variables $X$ and $Y$ are independent if the following condition is s
 * **Covariance**
 
     $$
-    Cov(X, Y) = E[(X - \mu_X)(Y - \mu_Y)] = E(XY) - \mu_X \mu_Y = E(XY) - E(X)E(Y)
+    \begin{aligned}
+    Cov(X, Y) &= E[(X - \mu_X)(Y - \mu_Y)] \\
+    &= E(XY) - \mu_X \mu_Y \\
+    &= E(XY) - E(X)E(Y)
+    \end{aligned}
     $$
 
 * **Correlation coefficient** - the linear relationship between two variables
@@ -168,15 +172,11 @@ $$
 For discrete random variables $X_1, \cdots, X_p$, given $X_1 = x_1, \cdots, X_k = x_k$ where $k < p$, the PMF of $X_{k+1}, \cdots, X_p$ is expressed as:
 
 $$
-p(x_{k+1}, \cdots, x_p \mid x_1, \cdots, x_k)
-$$
-
-$$
-= P(X_{k+1} = x_{k+1}, \cdots, X_p = x_p \mid X_1 = x_1, \cdots, X_k = x_k)
-$$
-
-$$
-= \frac{P(X_1 = x_1, \cdots, X_p = x_p)}{P(X_1 = x_1, \cdots, X_k = x_k)}
+\begin{aligned}
+&p(x_{k+1}, \cdots, x_p \mid x_1, \cdots, x_k)\\
+&= P(X_{k+1} = x_{k+1}, \cdots, X_p = x_p \mid X_1 = x_1, \cdots, X_k = x_k)\\
+&= \frac{P(X_1 = x_1, \cdots, X_p = x_p)}{P(X_1 = x_1, \cdots, X_k = x_k)}
+\end{aligned}
 $$
 
 * $p(x_{k+1}, \cdots, x_p \mid x_1, \cdots, x_k)$ is the PMF.
@@ -296,19 +296,11 @@ The distribution of a random vector, where each element follows a Gaussian (norm
 
 * A linear combination of Gaussian random variables $a_1X_1 + \cdots + a_pX_p$ (where at least one $a_i \neq 0$) also follows a Gaussian distribution.
 
-* For $X_1, \cdots, X_p$, if $k \, (k \leq p)$ components are selected to form a vector $\mathbf{X}_s = (X_{i_1}, \cdots, X_{i_k})$, then $\mathbf{X}_s$ also follows a Gaussian distribution.
+* For $X_1, \cdots, X_p$, if $k \, (k \leq p)$ components are selected to form a vector $$\mathbf{X}_s = (X_{i_1}, \cdots, X_{i_k})$$, then $\mathbf{X}_s$ also follows a Gaussian distribution.
 
 * Specifically, $\mathbf{X}_s \sim N_s(\mu_s, \Sigma_s)$, where:
   * $\mu_s = (\mu_{i_1}, \dots, \mu_{i_k})^T$,
   * The $(l, m)$-th element of $\Sigma_s$ is $\sigma_{i_l, i_m}$.
-
-* When $p = 2$, the distribution becomes a **bivariate Gaussian distribution**, and its PDF can be expressed using five parameters, including the correlation coefficient $\rho$, where $\sigma_{12} = \rho \sigma_1 \sigma_2$.
-
-$$
-f(x_1, x_2)
-= \frac{1}{2 \pi \sigma_1 \sigma_2 \sqrt{1 - \rho^2}} \exp \left( -\frac{1}{2(1 - \rho^2)} \left[ \frac{(x_1 - \mu_1)^2}{\sigma_1^2} + \frac{(x_2 - \mu_2)^2}{\sigma_2^2} - 2 \rho \frac{(x_1 - \mu_1)(x_2 - \mu_2)}{\sigma_1 \sigma_2} \right] \right)
-$$
-
 
 ### Partitioned Gaussian Distribution
 A vector formed by selecting a subset of components from a Gaussian random vector is referred to as a **partitioned Gaussian distribution**. Its mean vector and covariance matrix can be expressed as partitions of the mean vector and covariance matrix of the original random vector.

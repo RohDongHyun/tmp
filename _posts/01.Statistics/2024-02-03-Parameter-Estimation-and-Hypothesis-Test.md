@@ -6,40 +6,39 @@ categories: [01. Statistics, 01. Introduction to Statistics]
 tags: [parameter estimation, hypothesis test, statistics]
 math: true
 ---
-
-표본으로부터의 정보를 이용하여 모집단에 관한 추측이나 결론을 이끌어내는 과정을 **통계적 추론 (Statistical Inference)**라고 한다. 이러한 통계적 추론의 종류로는 **추정 (Estimation)**과 **가설 검정 (Hypothesis test)**이 있다.
+The process of using information from a sample to make inferences or draw conclusions about a population is called **statistical inference**. The two main types of statistical inference are **estimation** and **hypothesis testing**. 
 
 ## Parameter Estimation
-Estimation 이란, 표본으로부터 모집단의 특성값(모수)에 대한 추측값과 오차를 제시하는 것을 말한다. 
+**Estimation** refers to the process of using a sample to provide an estimate of a population parameter along with an associated error.
 
-* **모수(Population parameter, $\theta$)** : 모집단의 특징을 나타내는 대표값
+* **Population parameter ($\theta$)** : a representative value that characterizes the population
 
-* **랜덤표본** : 서로 독립이고 동일한 확률분포를 따르는 확률변수들을 말하며, 실제로 표본을 추출하여 얻은 값들을 관측값(Observation)이라 한다.
+* **Random sample** : a set of independent and identically distributed (i.i.d.) random variables. The actual values obtained from the sample are called **observations**.
 
-Parameter estimation의 종류로는 **점추정 (Point estimation)**과 **구간추정 (Interval estimation)**이 있다.
+Parameter estimation includes **point estimation** and **interval estimation**.
 
 ### Point Estimation
-Point estimation은 표본으로부터 계산한 모수의 추정값을 제시하는 것을 말한다. 이렇게 제시된 추정 값을 **추정량 (Estimator)**라고 한다.
+Point estimation involves providing a single estimate for a population parameter calculated from the sample. This estimated value is called the **estimator**.
 
-* 모평균의 추정량 : 표본평균 $\hat{\mu} = \bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i$
+* Estimator for the population mean : the sample mean $\hat{\mu} = \bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i$
 
-* 모분산의 추정량 : 표본분산 $\hat{\sigma}^2 = S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$
+* Estimator for the population variance : the sample variance $\hat{\sigma}^2 = S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$
 
 #### Evaluation of Estimator
-추정량(Estimator)을 평가하는 몇 가지 기준이 있다.
+Several criteria are used to evaluate an estimator:
 
-1. 편향 (Bias)
+1. **Bias**
     * $\text{Bias}(\hat{\theta}) = E(\hat{\theta}) - \theta$
-    * 편향이 작을 수록 좋은 추정량으로 볼 수 있다.
-      * 불편추정량 (Unbiased estimator): $E(\hat{\theta}) = \theta$을 만족하는 추정량
+    * An estimator with a smaller bias is considered better.
+      * **Unbiased estimator**: an estimator satisfying $E(\hat{\theta}) = \theta$.
 
-> 표본평균과 표본분산은 각각 모평균과 모분산의 불편추정량이다.
+> Both the sample mean and the sample variance are unbiased estimators of the population mean and the population variance, respectively.
 {: .prompt-info}
 
-2. 표준오차 (Standard error), 
-    * $\text{SE}(\hat{\theta})$: 추정량 $\hat{\theta}$의 표준편차
+2. **Standard error (SE)**
+    * $\text{SE}(\hat{\theta})$: the standard error of an estimator $\hat{\theta}$.
 
-Bias와 SE를 동시에 고려한 평가 기준으로는 $\text{MSE}(\hat{\theta})$가 있다.
+When considering both bias and SE, the **mean squared error (MSE)** is often used as a comprehensive evaluation metric:
 
 $$
 \begin{aligned}
@@ -49,46 +48,45 @@ $$
 $$
 
 ### Interval Estimation
-Interval Estimation은 모수의 추정값을 구간으로 제공하는 것이다. 구간 추정의 일반적인 방법으로는 **신뢰구간 (Confidence Interval, CI)**이 있다.
+**Interval estimation** provides an estimate for a population parameter in the form of a range or interval. A common method for interval estimation is the **confidence interval (CI)**.
 
 #### Confidence Interval (CI)
-신뢰수준 (Confidence level)이 $100(1 − \alpha)$%인 신뢰구간 $(L, U)$는 다음을 만족한다.
+A CI with a **confidence level** of $100(1 − \alpha)$% is represented as $(L, U)$, where:
 
 $$
 P(L\leq\theta\leq U) = 1 - \alpha
 $$
 
-이 때의 L과 U는 표본으로부터 구해진다. 즉, $L \equiv L(X_1, · · · , X_n)$, $U \equiv U(X_1, · · · , X_n)$이다. 따라서, $(L, U)$ 는 확률 변수로 이루어진 구간 (random interval)이다.
+Here, $L$ and $U$ are determined from the sample, *i.e.*, $L \equiv L(X_1, · · · , X_n)$ and $U \equiv U(X_1, · · · , X_n)$, making $(L, U)$ a **random interval**.
 
-* $1-\alpha$는 포함확률(coverage probability)이라고 부른다.
+* $1-\alpha$ is called the coverage probability.
 
-* 모분산 $\sigma^2$를 알 때 정규모집단의 모평균 $\mu$의 신뢰수준 $100(1-\alpha)$% 신뢰구간은 다음과 같다.
+* When the population variance $\sigma^2$ is known, the $100(1-\alpha)$% CI for the population mean $\mu$ of a normal population is given by:
 
 $$
 \left(\bar{X} - Z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}, \bar{X} + Z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right)
 $$
 
 #### Meaning of CI
-$\mu$의 신뢰수준 $100(1-\alpha)$% 신뢰구간의 의미는 다음과 같다:
+The meaning of a $100(1-\alpha)$% CI for $\mu$ is as follows:
 
-100번의 표본 추출을 통해 얻어진 100 개의 신뢰구간
+Out of 100 CIs constructed from 100 different random samples:
 
 $$
-\left(\bar{X} - Z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}, \bar{X} + Z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right)
+\left(\bar{X} - Z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}, \bar{X} + Z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}\right),
 $$
 
-에서, $100(1-\alpha)$개 정도의 신뢰구간이 모평균을 포함할 것으로 기대한다.
+approximately $100(1-\alpha)$ intervals are expected to contain the true population mean $\mu$.
 
-> 만약 $\sigma$도 몰라서 추정하는경우 신뢰구간의 길이도 표본에 따라 달라진다.
+> If $\sigma$ is unknown and must be estimated, the length of the CI will vary depending on the sample.
 {: .prompt-info}
 
-
 #### The Number of Samples
-추정에 필요한 표본의 수는 미리 정한 오차의 한계가 일정 수준 이하가 되도록 만드는 값으로 정할 수 있다.
+The required sample size for estimation can be determined such that the margin of error below a specified level.
 
-만약 모분산을 알고 있는 경우, 정규모집단의 모평균 신뢰구간의 오차의 한계는 $Z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}$이 된다.
+If the population variance $\sigma^2$ is known, the margin of error for the CI of the population mean in a normal distribution is $Z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}$.
 
-이 때, 오차의 한계를 $d$ 이하로 하는 표본의 수 $n$은 다음과 같다.
+To ensure the margin of error is less than or equal to a specified value $d$, the required sample size $n$ is determined as:
 
 $$
 Z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \leq d \\
