@@ -6,119 +6,136 @@ categories: [01. Statistics, 01. Introduction to Statistics]
 tags: [nonparametric statistics, robust methods, statistics]
 math: true
 ---
-Parameter estimation의 경우 기본적으로 모집단의 분포를 가정(정규분포 등)한 후, 해당 분포의 parameter를 추정하고 검정하였다 ([참고](https://rohdonghyun.github.io/posts/Parameter-Estimation-and-Hypothesis-Test/)). 하지만, 모집단에 대해 정규분포 같은 구체적인 분포함수를 가정하는 것이 무리일 때에는 모집단 분포에 대한 가정을 약화시켜 오류의 가능성을 줄이는 **비모수 (Nonparametric)** 방법을 고려할 수 있다.
+In parameter estimation, population distribution (e.g., normal distribution) are typically assumed, and the parameters of the distribution are estimated and tested ([reference](https://rohdonghyun.github.io/posts/Parameter-Estimation-and-Hypothesis-Test/)). However, when it is unreasonable to assume a specific distribution for the population, **nonparametric** methods can be considered to relax distributional assumptions and reduce the likelihood of errors.
 
 ## Nonparametric Hypothesis Test
-비모수적 방법에서는 모집단의 분포에 대한 가정을 최대한 약화시킨다. 따라서, 분포의 연속성과 경우에 따라 대칭성 만을 가정한다.
+Nonparametric methods relax assumptions about the population distribution as much as possible, typically assuming only continuity and, in some cases, symmetry.
 
-일반적으로 비모수 추론에 사용되는 값들은 관측값의 **부호 (sign)** 또는 **순위 (rank)**에 기초한 점수 (score)이다. 즉, 관측값 자체를 사용하지 않고, 모집단에 분포에 의존하지 않는 값들을 사용한다.
+In nonparametric inference, commonly used values are scores based on the **sign** or **rank** of the observations. Instead of using the raw observations themselves, these methods rely on values that are independent of the population distribution.
 
 ### One Sample Sign Test
-다음과 같은 가정 하에서 위치 모수 $\mu$에 대한 검정을 진행하려고 한다.
+The **sign test** is used to test the location parameter $\mu$ under the following assumptions: 
 
-* 데이터: 모집단으로부터 크기 $n$인 확률표본의 관측값 $X_1, \cdots , X_n$
+* Assumptions:
+  1. Model: $X_i = \mu + e_i$ ($i=1,\dots, n$), where $\mu$ is the unknown location parameter, and $e$ is the error term.
+  2. The $n$ error terms $e$ are i.i.d.
+  3. The error term $e$ follows a symmetric distribution about 0.
 
-* 가정
-    1. 기본 모형: $X_i = \mu + e_i$ ($i=1,\dots, n$). 여기서 $\mu$는 미지의 위치 모수, $e$는 오차항
-    2. $n$개의 오차항 $e$들은 i.i.d.
-    3. 오차항 $e$는 0에 대해서 대칭인 분포를 따름
+* Hypotheses:  
+  Tests for the location parameter $\mu$ are generally conducted under one of the following hypotheses:
+  1. $H_0: \mu = \mu_0$ vs. $H_1: \mu > \mu_0$
+  2. $H_0: \mu = \mu_0$ vs. $H_1: \mu < \mu_0$
+  3. $H_0: \mu = \mu_0$ vs. $H_1: \mu \ne \mu_0$
 
-위치 모수 $\mu$에 대한 검정은 일반적으로 세 가지 가설에 대해 진행한다:
+The sign test is a simple and oldest nonparametric test for the location parameter. Under the null hypothesis $H_0$, the test relies only on the count of observations greater than $\mu_0$.
 
-1. $H_0: \mu = \mu_0$ vs. $H_1: \mu > \mu_0$
-2. $H_0: \mu = \mu_0$ vs. $H_1: \mu < \mu_0$
-3. $H_0: \mu = \mu_0$ vs. $H_1: \mu \ne \mu_0$
-
-위 문제에 대한 비모수 검정은 **부호검정 (Sign test)**를 사용한다. 부호검정은 위치모수에 대한 비모수적 검정 중 가장 오래되고 간단한 검정법으로, 귀무가설 $H_0$하에서 위치모수의 값 $\mu_0$보다 큰 관측값의 개수만을 이용하여 검정을 진행한다.
-
-부호검정통계량은 다음과 같다.
+The sign test statistic is defined as:
 
 $$
-B = \sum_{i=1}^n I(X_i-\mu_0)
+B = \sum_{i=1}^n I(X_i-\mu_0),
 $$
 
-$I(x)$는 $x>0$이면 1, 아니면 0인 값을 갖는 indicator 함수이다. 즉, $B$는 $\mu_0$보다 큰 관측값의 개수를 나타낸다.
+where $I(x)$ is the indicator function: 1 if $x>0$, and 0 otherwise. Thus, $B$ represents the number of observations greater than $\mu_0$.
 
-위 부호검정 통계량을 이용한 부호검정은 다음과 같이 진행한다.
+The sign test is conducted as follows:
 
-1. $H_1: \mu > \mu_0$ 일 때, $B \geq b(\alpha, n)$이면 $H_0$을 기각
-2. $H_1: \mu < \mu_0$ 일 때, $B < b(1-\alpha, n)$이면 $H_0$을 기각
-3. $H_1: \mu \ne \mu_0$ 일 때, $B \geq b(\alpha/2, n)$이거나 $B < b(1-\alpha/2, n)$이면 $H_0$을 기각
+1. For $H_1: \mu > \mu_0$, reject $H_0$ if $B \geq b(\alpha, n)$.
+2. For $H_1: \mu < \mu_0$, reject $H_0$ if $B < b(1-\alpha, n)$.
+3. For $H_1: \mu \ne \mu_0$, reject $H_0$ if $B \geq b(\alpha/2, n)$ or $B < b(1-\alpha/2, n)$.
 
-여기서 $b(\alpha, n)$은 표본의 크기가 n일 때 $H_0$ 하에서 부호검정통계량 $B$의 상위 $100\alpha$ 백분위수로 $P_0[B\geq b(\alpha,n)] = \alpha$을 만족하는 값이다.
+Here, $b(\alpha, n)$ is the upper $100\alpha$-th percentile of the sign test statistic $B$ under $H_0$ for a sample of size $n$, satisfying $P_0[B\geq b(\alpha,n)] = \alpha$.
 
 #### Estimation based on Sign Test
+Estimation of the location parameter $\mu$ can be conducted using the sign test through the following steps:
 
-위치모수 $\mu$에 대한 추정은 다음과 같은 절차로 부호검정에 기초하여 진행할 수 있다.
+1. Arrange the observations in ascending order:
 
-1. 관측값을 크기순으로 배열: $X_{(1)} \leq X_{(2)} \leq \cdots \leq X_{(n)}$
-2. 부호검정통계량을 이용한 $\mu$의 추정량 $\hat{\mu}$은 관측값들의 중앙값으로 설정:
+    $$
+    X_{(1)} \leq X_{(2)} \leq \cdots \leq X_{(n)}
+    $$
 
-$$
-\hat{\mu} = \begin{cases} 
-X_{(k+1)}, & n = 2k + 1 \text{ 일 때} \\ 
-\frac{X_{(k)} + X_{(k+1)}}{2}, & n = 2k \text{ 일 때}
-\end{cases}
-$$
+2. The sign test-based estimate $\hat{\mu}$ is set as the median of the observations:
 
-이러한 추정량 $\hat{\mu}$은 윌콕슨 부호검정에 기초한 $\mu$의 핫지스-레만 일표본추정량 (Hodges-Lehmann one-sample estimator)이라 한다.
+    $$
+    \hat{\mu} = \begin{cases} 
+    X_{(k+1)} & n = 2k + 1, \\ 
+    \frac{X_{(k)} + X_{(k+1)}}{2} & n = 2k.
+    \end{cases}
+    $$
 
-> 일반적으로 검정의 power와 estimation의 accuracy는 비례하는데, 부호검정의 power는 낮은 편이다. 따라서, 부호검정으로 추정한 median 값은 대개 부정확하다.
+This estimate $\hat{\mu}$ is known as the **Hodges-Lehmann one-sample estimator** for $\mu$, based on the Wilcoxon sign test.
+
+> In general, the power of a test is proportional to the accuracy of the corresponding estimation. However, the power of the sign test is relatively low, which means that the median estimated using the sign test is often imprecise.
 {: .prompt-info}
 
 ### Wilcoxon Signed-Rank Test
-일표본(one-sample) 위치모수에 대해 가장 널리 사용되는 비모수적 검정법으로 **윌콕슨 부호순위검정 (Wilcoxon Signed-Rank Test)**이 있다. 여기서는 단순히 관측값이 $\mu_0$보다 크거나 작다는 것만 고려하는 것이 아니라 관측값의 상대적인 크기도 함께 고려하여 검정을 진행한다.
+The **Wilcoxon signed-rank test** is one of the most widely used nonparametric methods for testing the location parameter in a one-sample scenario. Unlike the sign test, which only considers whether the observations are greater or less than $\mu_0$, this test also takes the relative magnitude of the observations into account.
 
-부호검정에서는 오차항의 대칭성의 가정이 필요없지만 부호순위검정에서는 분포의 대칭성 가정이 필요하다.
+Unlike the sign test, which does not require the assumption of symmetry, the Wilcoxon signed-rank test requires the assumption of symmetry in the distribution.
 
-1. 모든 $i = 1, \ldots, n$에 대해, $Z_i = X_i - \mu_0$를 계산한다.
-2. $\vert Z_1\vert, \vert Z_2\vert, \ldots, \vert Z_n\vert$ 중에서 $\vert Z_i\vert$의 순위를 $R_i^+$라고 한다.
-3. 윌콕슨 부호순위검정통계량: $W^+ = \sum_{i=1}^n \psi(X_i - \mu_0) \cdot R_i^+$
-4. 검정법: 유의수준 $\alpha$에서
-    * $H_1: \mu > \mu_0$일 때, $W^+ \geq w^+(\alpha, n)$이면 $H_0$ 기각
-    * $H_1: \mu < \mu_0$일 때, $W^+ \leq w^+(1 - \alpha, n)$이면 $H_0$ 기각
-    * $H_1: \mu \neq \mu_0$일 때, $W^+ \geq w^+(\alpha/2, n)$ 또는 $W^+ < w^+(1 - \alpha/2, n)$이면 $H_0$ 기각
 
-여기서 $w^+(\alpha, n)$은 $H_0$하에서 부호순위검정통계량 $W^+$의 상위 $100\alpha$ 백분위수를 나타낸다.
+The Wilcoxon signed-rank test is conducted as follows:
 
-> 위치 모수에 대한 추정량으로는 실제적으로 $t$-검정 기반 추정량과 윌콕슨 부호 순위 검정 기반 추정량만을 주로 사용한다.
+1. For all $i = 1, \ldots, n$, calculate $Z_i = X_i - \mu_0$.
+2. From $\vert Z_1\vert, \vert Z_2\vert, \ldots, \vert Z_n\vert$, assign ranks $R_i^+$ based on the magnitude of $\vert Z_i\vert$.
+3. Compute the Wilcoxon signed-rank test statistic:
+    
+    $$
+    W^+ = \sum_{i=1}^n I(X_i - \mu_0) \cdot R_i^+.
+    $$
+
+4. Conduct the test at significance level $\alpha$:
+    * For $H_1: \mu > \mu_0$, reject $H_0$ if $W^+ \geq w^+(\alpha, n)$.
+    * For $H_1: \mu < \mu_0$, reject $H_0$ if $W^+ \leq w^+(1 - \alpha, n)$.
+    * For $H_1: \mu \neq \mu_0$, reject $H_0$ if $W^+ \geq w^+(\alpha/2, n)$ or $W^+ < w^+(1 - \alpha/2, n)$.
+
+Here, $w^+(\alpha, n)$ is the upper $100\alpha$-th percentile of the Wilcoxon signed-rank test statistic $W^+$ under $H_0$.
+
+> In practice, the primary estimators used for location parameters are based on the $t$-test or the Wilcoxon signed-rank test.
 {: .prompt-tip}
 
 #### Estimation based on Signed-Rank Test
-오차항 $e$ 분포의 대칭성을 가정할 수 있는 경우에 위치모수 $\mu$에 대한 점추정은 윌콕슨 부호순위 검정통계량을 이용하여 다음과 같이 구할 수 있다.
+When the distribution of error terms $e$ is assumed to be symmetric, the point estimation for the location parameter $\mu$ can be derived using the Wilcoxon signed-rank test statistic as follows:
 
-1. $N = n(n+1)/2$개의 모든 $i \leq j (i, j = 1, 2, \ldots, n)$에 대해:
+1. For all $i \leq j (i, j = 1, 2, \ldots, n)$, compute:
  
     $$
-    W_{ij} = \frac{X_i + X_j}{2}
+    W_{ij} = \frac{X_i + X_j}{2},
     $$
 
-    을 계산한다. 이때 $W_{ij}$을 월쉬평균(Walsh average)이라 한다.
+    where $W_{ij}$ is called the **Walsh average**.
 
-2. 월쉬평균 $W_{ij}$의 순서통계량을 $W_{(1)}, W_{(2)}, \ldots, W_{(N)}$이라 하면, $\mu$의 점추정량 $\hat{\mu}$은 $W_{ij}$의 중앙값으로 정의된다:
+2. Arrange the Walsh averages $W_{ij}$ in ascending order as order statistics:
+    
+    $$
+    W_{(1)}, W_{(2)}, \ldots, W_{(N)}
+    $$
+    
+    where $N = n(n+1)/2$. Define the point estimation $\hat{\mu}$ for $\mu$ as the median of the Walsh averages:
 
     $$
     \hat{\mu} = 
     \begin{cases}
-    W_{(k+1)}, & \text{if } N = 2k + 1 \text{일 때} \\
-    \frac{W_{(k)} + W_{(k+1)}}{2}, & \text{if } N = 2k \text{일 때}
+    W_{(k+1)} & \text{if } N = 2k + 1, \\
+    \frac{W_{(k)} + W_{(k+1)}}{2} & \text{if } N = 2k.
     \end{cases}
     $$
 
-이러한 추정량 $\hat{\mu}$은 윌콕슨 부호순위검정에 기초한 $\mu$의 핫지스-레만 일표본추정량 (Hodges-Lehmann one-sample estimator)이라 한다.
+This estimator $\hat{\mu}$ is known as the **Hodges-Lehmann one-sample estimator** for $\mu$, based on the Wilcoxon signed-rank test.
 
-> Walsh average는 계산량이 많아 실제로는 잘 쓰이지 않는다.
+> Due to the computational effort required to calculate Walsh averages, this method is rarely used in practice.
 {: .prompt-warning}
 
 ### Two-Sample Wilcoxon Rank Sum Test
-두 모집단에서 얻어진 확률표본으로부터 각 모집단의 위치모수에 대한 추정과 검정문제를 이표본 위치문제라고 한다.
+The problem of estimating and testing the location parameters from two populations based on random samples is referred to as a **two-sample location problem**.
 
-두 확률표본은 독립이며, 각 표본은 대조(control) 모집단과 처리(treatment) 모집단으로 생각할 수 있다. 이표본 위치문제는 두 모집단 간 위치모수가 차이가 있는지, 차이가 있다면 어느 정도 차이가 있는지 알아보는 것이 목적이다.
+Two independent random samples are drawn, often representing a **control** population and a **treatment** population. The goal is to determine whether there is a difference in the location parameters between two populations and, if so, quantify that difference.
 
-* 데이터: 두 모집단으로부터 각각 크기가 $m$과 $n$인 확률표본을 $(X_1, X_2, \ldots, X_m)$, $(Y_1, Y_2, \ldots, Y_n)$ 이라 하자. $N = m + n$으로 표기하고, 편의상 $m \geq n$이라 가정한다.
+Let the random samples from two populations be $(X_1, X_2, \ldots, X_m)$ and $(Y_1, Y_2, \ldots, Y_n)$, where $m$ and $n$ are the respective sample sizes. Denote $N = m + n$, and assume that $m \geq n$ for convenience.
 
-* 가정
-    1. $\mu$은 $X_i$에 대한 미지의 위치모수, $\Delta$는 두 집단간의 위치모수의 차(이동모수), $e$은 오차항
+* Assumptions:
+    1. $\mu$ is the unknown location parameter for $X_i$, and $\Delta$ is the shift parameter (difference in location parameters between the two groups), with $e$ as the error term:
+
     $$
     \begin{aligned}
     X_i &= \mu + e_i, \quad i = 1, \ldots, m \\
@@ -126,46 +143,51 @@ $$
     \end{aligned}
     $$
 
-    2. $N$개의 오차항들은 서로 독립이고, 두 표본 내에서 모두 동일한 연속분포를 따른다.
+    2. The $N$ error terms $e$ are independent and identically distributed (i.i.d.) and follow a continuous distribution.
 
-* 이표본 위치문제에서 관심 있는 모수는 이동모수(shift parameter) $\Delta$이고 $\Delta$의 추정량은 $\hat{\Delta}$로 나타내고, $\Delta$에 대한 검정은 일반적으로 세 가지 가설에 대해 진행한다:
+* Hypotheses:  
+    The estimator for $\Delta$ is denoted as $\hat{\Delta}$. Tests for $\Delta$ typically involve one of the following hypotheses:
     1. $H_0: \Delta = 0$ vs. $H_1: \Delta > 0$
     2. $H_0: \Delta = 0$ vs. $H_1: \Delta < 0$
     3. $H_0: \Delta = 0$ vs. $H_1: \Delta \neq 0$
 
-위 문제에 대해서 가장 널리 사용되는 방법으로는 **윌콕슨 순위합 검정 (Wilcoxon Rank Sum Test)**이 있다. 이는 혼합표본에서 각 관측값의 순위를 이용하는 방법으로, 다음과 같이 진행된다.
+The **Wilcoxon rank sum test** is the most widely used method for the two-sample location problem. It uses the ranks of the observations in the combined sample, and the procedure is as follows:
 
-1. $X = (X_1, \ldots, X_m)$와 $Y = (Y_1, \ldots, Y_n)$의 혼합표본에서 $Y_j$의 순위를 $R_j$라고 한다.
-2. 윌콕슨 순위합통계량: $$W = \sum_{j=1}^n R_j$$
-3. 검정법: 유의수준 $\alpha$에서
-    * $H_1: \Delta > 0$일 때, $W \geq w(\alpha, m, n)$이면 $H_0$ 기각
-    * $H_1: \Delta < 0$일 때, $W < w(1 - \alpha, m, n)$이면 $H_0$ 기각
-    * $H_1: \Delta \neq 0$일 때, $W \geq w(\alpha/2, m, n)$이면 또는 $W < w(1 - \alpha/2, m, n)$이면 $H_0$ 기각
+1. Assign ranks $R_j$ to the $Y_j$ observations in the combined sample $X \cup Y$, where $X = (X_1, \ldots, X_m)$ and $Y = (Y_1, \ldots, Y_n)$.
+2. Compute the Wilcoxon rank sum statistic:
     
-여기서 $w(\alpha, m, n)$은 $H_0$ 하에서 순위합통계량 $W$의 분포의 상위 $100\alpha$ 백분위수를 나타낸다.
+    $$
+    W = \sum_{j=1}^n R_j
+    $$
+
+3. Conduct the test at significance level $\alpha$:
+    * For $H_1: \Delta > 0$, reject $H_0$ if $W \geq w(\alpha, m, n)$.
+    * For $H_1: \Delta < 0$, reject $H_0$ if $W < w(1 - \alpha, m, n)$.
+    * For $H_1: \Delta \neq 0$, reject $H_0$ if $W \geq w(\alpha/2, m, n)$ or $W < w(1 - \alpha/2, m, n)$.
+    
+Here, $w(\alpha, m, n)$ denotes the $100\alpha$-th percentile of the distribution of the rank sum statistic $W$ under $H_0$.
 
 #### Estimation based on Rank Sum Test
-이동모수 $\Delta$은 윌콕슨 순위합 검정통계량을 이용하여 다음과 같이 추정할 수 있다.
+The shift parameter $\Delta$ can be estimated using the Wilcoxon rank sum test statistic as follows:
 
-1. 모든 $i, j (i = 1, \ldots, m, j = 1, \ldots, n)$에 대해 $mn$개의 $V_{ij} = Y_j - X_i$를 구한다.
-2. $V_{ij}$의 순서통계량을 $V_{(1)}, V_{(2)}, \ldots, V_{(mn)}$이라 하면 $\Delta$의 점추정량 $\Delta$는 $V_{ij}$의 중앙값으로 정의된다.
+1. Compute $V_{ij} = Y_j - X_i$ for all $i, j (i = 1, \ldots, m, j = 1, \ldots, n)$.
+2. Arrange the $V_{ij}$ values in ascending order to obtain the order statistics $V_{(1)}, V_{(2)}, \ldots, V_{(mn)}$. Define the point estimation of $\Delta$ as the median of the $V_{ij}$ values.
 
 $$
 \Delta = 
 \begin{cases} 
-V_{(k+1)}, & mn = 2k + 1일 때 \\
-\frac{V_{(k)} + V_{(k+1)}}{2}, & mn = 2k일 때
+V_{(k+1)}, & \text{if } mn = 2k + 1, \\
+\frac{V_{(k)} + V_{(k+1)}}{2}, & \text{if } mn = 2k.
 \end{cases}
 $$
 
 ### Two-Sample Test for Scale Parameters
-이표본 척도문제란 두 표본의 척도모수에 차이가 있는 지를 검정하는 문제이다.
+The **two-sample scale problem** involves testing whether the scale parameters of two samples differ.
 
-* 데이터: 두 모집단으로부터 각각 크기가 $m$과 $n$인 확률표본을 $(X_1, X_2, \ldots, X_m)$, $(Y_1, Y_2, \ldots, Y_n)$이라 하자. 이전과 동일하게 $N = m + n$으로 표기하고, 편리상 $m \geq n$이라 가정한다.
+Random samples of sizes $m$ and $n$ from two populations are denoted as $(X_1, X_2, \ldots, X_m)$ and $(Y_1, Y_2, \ldots, Y_n)$. Let $N = m + n$, and assume $m \geq n$ for convenience.
 
-* 가정
-    1. $\mu_X, \mu_Y$은 $X$와 $Y$ 표본의 위치모수, $\sigma_X, \sigma_Y$은 $X$와 $Y$ 표본의 척도모수, $e$은 오차항이다.
-    
+* Assumptions:
+    1. $\mu_X$ and $\mu_Y$ are the location parameters, and $\sigma_X$ and $\sigma_Y$ are the scale parameters of the $X$ and $Y$ samples, respectively, with $e$ as the error term:     
     $$
     \begin{aligned}
     X_i &= \mu_X + \sigma_X e_i, \quad i = 1, \ldots, m \\
@@ -173,44 +195,48 @@ $$
     \end{aligned}
     $$
 
-    2. $N$개의 오차항들은 서로 독립이고, 두 표본 내에서 모두 동일한 연속분포를 따른다.
+    2. The $N$ error terms $e$ are i.i.d. and follow a continuous distribution.
 
-이표본 척도문제에서는 두 척도모수 간의 비율 확인하는 방법을 사용한다. 두 척도모수 간의 비는 $\gamma = \sigma_Y / \sigma_X$로 나타내며, $\gamma$에 대한 검증은 일반적으로 세 가지 가설에 대해 진행한다:
+* Hypotheses:
+    The ratio of the two scale parameters is denoted as $\gamma = \sigma_Y / \sigma_X$. Testing $\gamma$ is generally performed under one of the following hypotheses:
 
-1. $H_0 : \gamma^2 = 1$ vs. $H_1 : \gamma^2 > 1$
-2. $H_0 : \gamma^2 = 1$ vs. $H_1 : \gamma^2 < 1$
-3. $H_0 : \gamma^2 = 1$ vs. $H_1 : \gamma^2 \ne 1$
+    1. $H_0 : \gamma^2 = 1$ vs. $H_1 : \gamma^2 > 1$
+    2. $H_0 : \gamma^2 = 1$ vs. $H_1 : \gamma^2 < 1$
+    3. $H_0 : \gamma^2 = 1$ vs. $H_1 : \gamma^2 \ne 1$
 
-여기서는 두 위치모수에 대한 정보가 있는 경우, 즉 $\mu_Y - \mu_X$가 알려졌다고 가정한다. $\mu_Y - \mu_X$가 알려진 경우에는 $Y$ 관측값을 $Y$에서 두 위치모수의 차이인 $\mu_Y - \mu_X$의 값으로 대체하면 두 관측값의 위치모수는 같은 것으로 생각할 수 있기 때문에, 편의상 $\mu_Y - \mu_X = 0$이라 가정할 수 있다.
+In cases where $\mu_Y - \mu_X$ is known, $Y_j$ can be adjusted by subtracting $\mu_Y - \mu_X$. This adjustment ensures that the location parameters of the two populations are the same, allowing the scale parameters to solely influence the ranks in the combined sample.
 
-이렇게 두 모집단의 위치모수가 같은 경우에는 척도모수가 혼합표본의 순위에 절대적인 영향을 주게 되고, 이 점을 이용한 대표적인 검정은 **앤서리-브래들리 검정(Ansari-Bradley test)**이 있다.
+#### Ansari-Bradley Test
+The **Ansari-Bradley test** is a widely used method for the two-sample scale problem, based on the ranks in the combined sample.
 
-앤서리-브래들리 검정의 절차는 다음과 같다.
+1. Combine the $N = m + n$ observations and arrange them in ascending order.
 
-1. $N = m + n$개의 관측값을 작은 값부터 크기 순서대로 나열한다.
+2. For each $X_i$, assign a rank $S_i$ corresponding to its position in the combined sample. The **Ansari-Bradley score** $a_{AB}(S_i)$ is defined as follows:
 
-2. 혼합표본에서 관측값 $X_i$의 순위를 $S_i$라 하면 $S_i$들은 순위 $1, 2, \ldots, N$ 중 $m$개를 차지하고, 이 $S_i$에 대해 앤서리-브래들리 스코어 $a_{AB}(S_i)$는 다음과 같이 정의된다.
+    | $S_i$         | 1   | 2   | ... | $\frac{N+1}{2}$ | ... | $N-1$ | $N$ (odd) |
+    | ------------- | --- | --- | --- | --------------- | --- | ----- | --------- |
+    | $a_{AB}(S_i)$ | 1   | 2   | ... | $\frac{N+1}{2}$ | ... | 2     | 1         |
 
-
-    | $S_i$         | 1   | 2   | ... | $\frac{N+1}{2}$ | ... | $N-1$ | $N$ (홀수) |
-    | ------------- | --- | --- | --- | --------------- | --- | ----- | ---------- |
-    | $a_{AB}(S_i)$ | 1   | 2   | ... | $\frac{N+1}{2}$ | ... | 2     | 1          |
-
-    | $S_i$         | 1   | 2   | ... | $\frac{N}{2}$ | $\frac{N}{2} + 1$ | ... | $N-1$ | $N$ (짝수) |
+    | $S_i$         | 1   | 2   | ... | $\frac{N}{2}$ | $\frac{N}{2} + 1$ | ... | $N-1$ | $N$ (even) |
     | ------------- | --- | --- | --- | ------------- | ----------------- | --- | ----- | ---------- |
     | $a_{AB}(S_i)$ | 1   | 2   | ... | $\frac{N}{2}$ | $\frac{N}{2}$     | ... | 2     | 1          |
 
+3. Compute the Ansari-Bradley test statistic: 
+   
+   $$
+   T_{AB} = \sum_{i=1}^m a_{AB}(S_i)
+   $$
 
-3. 앤서리-브래들리 통계량은 다음과 같이 정의한다: $T_{AB} = \sum_{i=1}^m a_{AB}(S_i)$.
+4. Decision rules at significance level $\alpha$ $(\gamma^2 = \sigma_Y^2/\sigma_X^2)$:
+    * For $H_1 : \gamma^2 > 1$, reject $H_0$ if $T_{AB} \geq t_{AB}(\alpha, m, n)$.
+    * For $H_1 : \gamma^2 < 1$, reject $H_0$ if $T_{AB} < t_{AB}(1 - \alpha, m, n)$.
+    * For $H_1 : \gamma^2 \neq 1$, reject $H_0$ if $T_{AB} \geq t_{AB}(\alpha/2, m, n)$ or $T_{AB} < t_{AB}(1 - \alpha/2, m, n)$.
 
-4. 검정법: 유의수준 $\alpha$에서 $(\gamma^2 = \sigma_Y^2/\sigma_X^2)$,
-    * $H_1 : \gamma^2 > 1$일 때, $T_{AB} \geq t_{AB}(\alpha, m, n)$이면 $H_0$ 기각
-    * $H_1 : \gamma^2 < 1$일 때, $T_{AB} < t_{AB}(1 - \alpha, m, n)$이면 $H_0$ 기각
-    * $H_1 : \gamma^2 \neq 1$일 때, $T_{AB} \geq t_{AB}(\alpha/2, m, n)$이거나 $T_{AB} < t_{AB}(1 - \alpha/2, m, n)$이면 $H_0$ 기각
+Here, $t_{AB}(\alpha, m, n)$ represents the $100\alpha$-th percentile of $T_{AB}$ under $H_0$.
 
-혼합표본에서 $\gamma^2 > 1$ $(\sigma_Y^2 > \sigma_X^2)$라는 것은 $Y$들이 $X$보다 넓게 퍼져있다는 것을 의미한다. 따라서 $X_i$의 순위 $S_i$는 중앙에 가깝게 분포되면서, $S_i$에 대응되는 $a_{AB}(S_i)$은 상대적으로 큰 값을 가지게 되고, 앤서리-브래들리 통계량 $T_{AB}$가 커지게 된다.
+$\gamma^2 > 1$ $(\sigma_Y^2 > \sigma_X^2)$ means that the $Y$ observations are more dispersed than the $X$ observations. This results in the $X_i$ ranks $S_i$ being concentrated near the center, leading to larger $a_{AB}(S_i)$ scores and a higher $T_{AB}$.
 
-$T_{AB}$는 $X$들이 갖는 앤서리-브래들리 스코어 합으로 정의했지만, $Y$들이 갖는 앤서리-브래들리 스코어의 합을 고려해도 비슷한 검정을 진행할 수 있다.
+Although $T_{AB}$ is defined as the sum of the Ansari-Bradley scores for $X$, a similar test can be performed by considering the scores for $Y$.
 
 ## Correlation Analysis
 **상관분석 (Correlation Analysis)**은 두 변수 간에 어떤 선형적 관계를 가지고 있는 지를 분석하는 방법을 말한다. 
