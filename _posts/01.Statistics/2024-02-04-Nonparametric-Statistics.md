@@ -239,141 +239,176 @@ $\gamma^2 > 1$ $(\sigma_Y^2 > \sigma_X^2)$ means that the $Y$ observations are m
 Although $T_{AB}$ is defined as the sum of the Ansari-Bradley scores for $X$, a similar test can be performed by considering the scores for $Y$.
 
 ## Correlation Analysis
-**상관분석 (Correlation Analysis)**은 두 변수 간에 어떤 선형적 관계를 가지고 있는 지를 분석하는 방법을 말한다. 
+**Correlation analysis** is a method used to examine the linear relationship between two variables. 두 변수 간에 어떤 선형적 관계를 가지고 있는 지를 분석하는 방법을 말한다. 
 
 ### Correlation Coefficient
 
-일반적으로 상관관계의 정도를 나타내는 값으로 다음과 같이 정의된 **상관계수 (Correlation Coefficient) $\rho$**를 사용한다.
+The degree of correlation is typically expressed using the **correlation coefficient $\rho$**, defined as:
 
 $$
 \rho = \frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}
 $$
 
-$-1 \leq \rho \leq 1$이고, $\rho$가 1에 가까울수록 강한 양의 상관관계, −1에 가까울수록 강한 음의 상관관계가 있음을 나타낸다. 그리고 X와 Y가 독립인 경우 $\rho=0$이 된다.
+Where:
+* $-1 \leq \rho \leq 1$,
+* $\rho$ close to 1 indicates a strong positive correlation,
+* $\rho$ close to -1 indicates a strong negative correlation,
+* $\rho=0$ implies no linear correlation.
 
-이러한 상관계수 $\rho$의 추정량으로는 주로 **피어슨 표본상관계수 (Pearson Correlation Coefficient)**가 사용되며, 이는 다음과 같이 정의된다.
+> although independence also implies $\rho=0$, the reverse is not always true.
+{: .prompt-info}
+
+An estimator of $\rho$ is the **Pearson correlation coefficient**, defined as:
 
 $$
 r = \frac{\sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum_{i=1}^n (X_i - \bar{X})^2 \cdot \sum_{i=1}^n (Y_i - \bar{Y})^2}}
 $$
 
-다만, $\rho$는 정규분포에서는 상관관계를 나타내는 좋은 측도이지만, 비모수적 방법에서는 $\rho$의 의미가 약해지며 앞의 $\rho$ 성질과 비슷한 성질을 갖는 다른 측도를 사용한다.
+While $\rho$ is an effective measure of correlation for normally distributed data, its interpretation weakens for nonparametric methods. In such cases, alternative measures with similar properties are used, such as:
 
-그 중 보편적으로 사용되는 측도로는 **켄달의 타우 (Kendall's Tau)**, **스피어만의 순위상관계수 (Spearman's Rank Correlation Coefficient)**가 있다.
+* **Kendall's tau**,
+* **Spearman's rank correlation coefficient**.
 
 ### Kendall's Tau
-관측값이 $(X_1, Y_1), \ldots, (X_n, Y_n)$으로 주어져 있을 때, $i, j$ 번째 쌍에 대해 다음과 같이 정의하자.
+Kendall's tau is a measure of association between two variables based on the concordance and discordance of paired observations $(X_1, Y_1), \ldots, (X_n, Y_n)$. For each pair $i, j$, it is defined as follows:
 
-* $X_i - X_j$와 $Y_i - Y_j$의 부호가 같다면 **부합(concordant)**이고, 이에 대한 확률은 $\pi_c = \text{P}[(X_i - X_j)(Y_i - Y_j) > 0]$
+* If the signs of $X_i - X_j$ and $Y_i - Y_j$ are the same, the pair is **concordant**, and the probability of such a pair is $\pi_c = \text{P}[(X_i - X_j)(Y_i - Y_j) > 0]$.
 
-* $X_i - X_j$와 $Y_i - Y_j$의 부호가 다르면 **비부합(discordant)**이고, 이에 대한 확률은 $\pi_d = \text{P}[(X_i - X_j)(Y_i - Y_j) < 0]$
+* If the signs of $X_i - X_j$ and $Y_i - Y_j$ are different, the pair is **discordant**, and the probability of such a pair is $\pi_d = \text{P}[(X_i - X_j)(Y_i - Y_j) < 0]$.
 
-이 때 켄달의 타우(Kendall's tau)는 다음과 같이 정의된다.
+Kendall's tau is then defined as:
 
 $$
 \tau = \pi_c - \pi_d
 $$
 
-즉, concordant 확률과 discordant 확률의 차이를 말한다.
+*i.e.*, the difference between the probabilities of concordant and discordant pairs.
 
 #### Properties of Kendall's Tau
 
-* $\pi_c + \pi_d = 1$이므로, $-1 \leq \tau \leq 1$을 만족
+* Since $\pi_c + \pi_d = 1$, $-1 \leq \tau \leq 1$.
 
-* X, Y가 서로 독립인 경우 $\pi_c=\pi_d=1/2$ 이기 때문에 $\tau = 0$이다. 또한 $\tau > 0$은 X와 Y가 양의 상관관계에 있음을 뜻하고, $\tau < 0$은 X와 Y가 음의 상관관계에 있음을 뜻한다.
+* If $X$ and $Y$ are independent, $\pi_c=\pi_d=1/2$, and hence $\tau = 0$.
+  * $\tau > 0$: positive association between $X$ and $Y$.
+  * $\tau < 0$: negative association between $X$ and $Y$
 
-* 켄달의 $\tau$와 상관계수 $\rho$사이에는 (X, Y)가 이변량 정규분포를 따를 때, 다음과 같은 관계가 성립한다.
+* If $(X,Y)$ follows a bivariate normal distribution, the relationship between Kendall's tau ($\tau$) and the correlation coefficient ($\rho$) is given by:
 
 $$
-\tau = \frac{2}{\pi} \arcsin (\rho)
+\tau = \frac{2}{\pi} \arcsin (\rho).
 $$
 
 #### Kendall's Tau Independence Test
-앞의 성질을 이용하여, X와 Y의 독립성을 검정하기 위해 귀무가설 $H_0 : \tau = 0$을 검정한다. 이에 대한 대립가설은 한쪽검정, 양측검정 모두 가능하다.
+To test the independence of $X$ and $Y$, use the null hypothesis $H_0 : \tau = 0$. Alternative hypotheses can be one-sided or two-sided.
 
-1. 모든 $i, j$에 대해 부합인 쌍의 개수 $P$와 비부합인 쌍의 개수 $Q$를 계산한다.
+1. Compute the counts of concordant ($P$) and discordant ($Q$) pairs:
 
     $$
     \begin{aligned}
-    P &= (X_i - X_j)(Y_i - Y_j) > 0 \text{인 쌍의 개수} \\
-    Q &= (X_i - X_j)(Y_i - Y_j) < 0 \text{인 쌍의 개수}
+    P &= \text{Number of pairs where} (X_i - X_j)(Y_i - Y_j) > 0, \\
+    Q &= \text{Number of pairs where} (X_i - X_j)(Y_i - Y_j) < 0.
     \end{aligned}
     $$
 
-2. 켄달 통계량: $K = P - Q = \sum_{i<j} \text{sign}(X_i - X_j) \text{sign}(Y_i - Y_j)$.   
-여기서 $t = 0$이면 $\text{sign}(t) = 0$, $t < 0$이면 $\text{sign}(t) = -1$, $t > 0$이면 $\text{sign}(t) = 1$이다.
+2. Calculate the Kendall test statistic:
+   
+    $$
+    K = P - Q = \sum_{i<j} \text{sign}(X_i - X_j) \text{sign}(Y_i - Y_j),
+    $$
 
-3. 검정법: 유의수준 $\alpha$에서,
-    * $H_1 : \tau > 0$일 때, $K \geq k(\alpha, n)$이면 $H_0$를 기각
-    * $H_1 : \tau < 0$일 때, $K \leq -k(\alpha, n)$이면 $H_0$를 기각
-    * $H_1 : \tau \neq 0$일 때, $K \geq k(\alpha/2, n)$ 또는 $K \leq -k(\alpha/2, n)$이면 $H_0$를 기각
+    where:
 
-여기서 $k(\alpha, n)$은 $P_0[K \geq k(\alpha, n)] = \alpha$를 만족하는 상수이다.
+    $$
+    \begin{cases} 
+		1 & \text{if } t \leq 0, \\ 
+        0 & \text{if } t = 0, \\ 
+        -1 & \text{if } t > 0. 
+    \end{cases}
+    $$
+
+3. Testing procedure at significance level $\alpha$:
+    * For $H_1 : \tau > 0$, reject $H_0$ if $K \geq k(\alpha, n)$.
+    * For $H_1 : \tau < 0$, reject $H_0$ if $K \leq -k(\alpha, n)$.
+    * For $H_1 : \tau \neq 0$, reject $H_0$ if $K \geq k(\alpha/2, n)$ or $K \leq -k(\alpha/2, n)$.
+
+Here, $k(\alpha, n)$ is a constant satisfying $P_0[K \geq k(\alpha, n)] = \alpha$.
 
 #### Estimation of Kendall's Tau
-켄달의 타우를 추정하기 위해 다음과 같은 켄달의 표본상관계수를 사용한다.
+The sample correlation coefficient for Kendall's tau is:
 
 $$
-\hat{\tau} = \frac{K}{\binom{n}{2}} = \frac{2K}{n(n-1)}
+\hat{\tau} = \frac{K}{\binom{n}{2}} = \frac{2K}{n(n-1)},
 $$
+
+where $K$ is the Kendall test statistic.
 
 ### Spearman's Rank Correlation Coefficient
-$X_i$와 $Y_i$의 순위를 각각 $R_i$와 $S_i$라고 하자. 스피어만의 순위상관계수 (Spearman's Rank Correlation Coefficient)는 다음과 같이 정의된다.
+Let $R_i$ and $S_i$ represent the ranks of $X_i$ and $Y_i$, respectively. The Spearman's rank correlation coefficient is defined as:
 
 $$
-r_s = \frac{\sum_{i=1}^{n}(R_i - \bar{R})(S_i - \bar{S})}{\sqrt{\sum_{i=1}^{n}(R_i - \bar{R})^2 \cdot \sum_{i=1}^{n}(S_i - \bar{S})^2}}
+r_s = \frac{\sum_{i=1}^{n}(R_i - \bar{R})(S_i - \bar{S})}{\sqrt{\sum_{i=1}^{n}(R_i - \bar{R})^2 \cdot \sum_{i=1}^{n}(S_i - \bar{S})^2}}.
 $$
 
-> 스피어만 순위상관계수는 Rank를 값으로 갖는 피어슨 상관계수이다.
+> Spearman's rank correlation coefficient is equivalent to the Pearson correlation coefficient applied to ranks.
 {: .prompt-info}
 
 #### Spearman Independence Test
 
-1. $X_i, Y_i$의 순위 $R_i, S_i$를 앞장과 같이 구한다.
+1. Compute the ranks $R_i$ and $S_i$ for $X_i$ and $Y_i$ as described above.
 
-2. 스피어만의 순위상관계수:
+2. Calculate Spearman's rank correlation coefficient:
 
     $$
-    r_s = 1 - \frac{6}{n(n^2 - 1)} \sum_{i=1}^{n} (R_i - S_i)^2
+    r_s = 1 - \frac{6}{n(n^2 - 1)} \sum_{i=1}^{n} (R_i - S_i)^2.
     $$
 
-3. 검정법: 이미 계산된 $r_s(\alpha, n)$의 값에 대해,
-    * $H_1 : \rho_s > 0$일 때, $r_s \geq r_s(\alpha, n)$이면 $H_0$를 기각
-    * $H_1 : \rho_s < 0$일 때, $r_s \leq -r_s(\alpha, n)$이면 $H_0$를 기각
-    * $H_1 : \rho_s \neq 0$일 때, $r_s \geq r_s(\alpha/2, n)$ 또는 $r_s \leq -r_s(\alpha/2, n)$이면 $H_0$를 기각
+3. Testing procedure using the critical value $r_s(\alpha, n)$:
+    * For $H_1 : \rho_s > 0$, reject $H_0$ if $r_s \geq r_s(\alpha, n)$.
+    * For $H_1 : \rho_s < 0$, reject $H_0$ if $r_s \leq -r_s(\alpha, n)$.
+    * For $H_1 : \rho_s \neq 0$, reject $H_0$ if $r_s \geq r_s(\alpha/2, n)$ or $r_s \leq -r_s(\alpha/2, n)$.
 
 ### Comparison with Kendall's Tau and Spearman's Rank Correlation Coefficient
-* 계산과정은 $r_s$의 계산이 $\hat{\tau}$의 계산보다 간편하다.
+* Ease of computation: calculating $r_s$ is simpler than calculating $\hat{\tau}$.
 
-* $\hat{\tau}$의 분포는 $r_s$의 분포보다 더 빨리 정규분포에 수렴한다.
+* Convergence to normal distribution: the distribution of $\hat{\tau}$ converges to the normal distribution faster than $r_s$.
 
-* 독립성 검정에서 두 통계량에 기초한 점근효율은 같다.
+* Asymptotic efficiency: both statistics have the same asymptotic efficiency for independence tests.
 
-* 독립성 검정에서 $\hat{\tau}$와 $r_s$의 값은 달라도 귀무가설을 기각 또는 채택하는 결정은 거의 동일하다.
+* Decisions on independence: while $\hat{\tau}$ and $r_s$ may yield different values, their conclusions on rejecting or accepting the null hypothesis are almost identical.
 
-* $\hat{\tau}$는 모수 $\tau = \pi_c - \pi_d$의 추정량이지만, $r_s$에 대응되는 모수는 없다.
+* Interpretation: $\hat{\tau}$ is an estimator of $\tau = \pi_c - \pi_d$, but $r_s$ does not correspond to any specific parameter.
 
 ## Robust Methods
-Robust 모수 추정은 자료에 이상치 (outlier)가 있는 경우와 자료에서 이상치를 제거한 경우의 모수 추정 결과가 크게 변하지 않는 추정 방법을 의미한다. 예를 들어 표본 평균이나 표본 표준편차는 robust 추정량이 되지 않는다. 반면 중간값 (median)은 robust 추정량이다.
+**Robust parameter estimation** refers to methods where the estimation results remain largely unaffected by the presence of outliers in the data. For instance, the sample mean and sample standard deviation are not robust estimators, whereas the **median** is considered a robust estimator.
 
 ### Three-sigma Rule
-**Three-sigma 규칙**이란, 평균에서 양쪽으로 3표준편차의 범위에 거의 자료들(99.7%)이 들어간다는 것을 말한다. 이를 이용하여, $\vert \frac{x_i- \bar{x}}{s} \vert > 3$인 $x_i$를 이상치로 정의하고, 제거할 수 있다.
-
-하지만, Three-sigma 규칙은 다음과 같은 문제점들이 있다.
-
-* 자료의 수가 많은 경우 이상치가 아니지만 앞의 Three-sigma 규칙을 적용하면 이상치로 잘못 판단될 수 있다.
-
-* 자료의 수가 적은 경우 이상치를 찾아내지 못할 수 있다.
-
-* 여러 개의 이상치가 존채할 때, 표본표준편차 값이 켜저 규칙이 좋지 않을 수 있다.
-
-이에 대한 해결책 중 하나로, $t_i = \vert \frac{x_i- \bar{x}}{s} \vert$ 대신 다음 값을 사용할 수 있다.
+The **three-sigma rule** states that approximately 99.7% of data values fall within three standard deviations from the mean in a normal distribution. Using this rule, an observation $x_i$ can be defined as an outlier if:
 
 $$
-t_i' = \frac{x_i - \text{median}(x)}{\text{MADN}(x)}
+\vert \frac{x_i- \bar{x}}{s} \vert > 3,
 $$
 
-여기서 $\text{MADN}(x) = \text{MAD}(x) / 0.6745$ 이고, $\text{MAD}(x) = \text{median}(\vert x_i - \text{median}(x)\vert)$이다. 이렇게 계산된 $t_i'$을 이용하여 이상치를 판단할 수 있다.
+where $\bar{x}$ is the sample mean and $s$ is the sample standard deviation.
+
+However, there are several issues with the Three-sigma rule.
+
+* Large sample size: when the sample size is large, observations that are not actual outliers might be incorrectly flagged as outliers.
+
+* Small sample size: when the sample size is small, genuine outliers might not be detected. 자료의 수가 적은 경우 이상치를 찾아내지 못할 수 있다.
+
+* Multiple outliers: if multiple outliers are present, the sample standard deviation $s$ can become inflated, making the rule ineffective.
+
+To address these issues, the following modified statistic can be used instead of $t_i = \vert \frac{x_i- \bar{x}}{s} \vert$:
+
+$$
+t_i' = \frac{x_i - \text{median}(x)}{\text{MADN}(x)},
+$$
+
+where:
+* $\text{MADN}(x) = \text{MAD}(x) / 0.6745$,
+* $\text{MAD}(x) = \text{median}(\vert x_i - \text{median}(x)\vert)$. 
+
+This approach is more robust to outliers because it uses the median and median deviation (MAD) instead of the mean and standard deviation, which are sensitive to extreme values.
 
 > Sketch of Proof)
 > $$
