@@ -7,132 +7,172 @@ tags: [bayesian statistics, statistics]
 math: true
 ---
 ## Bayesian Inference
-**베이지안 추론 (Bayesian Inference)**은 통계적 추론의 한 방법으로, 추론해야 하는 대상의 사전 확률에서 데이터 관측을 통해 해당 대상의 사후 확률을 업데이트하여 추론하는 방법이다. 이는 베이즈 확률론을 기반으로 하며, 이는 추론하는 대상을 확률변수로 보아 그 변수의 확률분포를 추정하는 것을 의미한다.
+**Bayesian inference** is a method of statistical inference that updates the probability of a hypothesis as new data becomes available. It is based on Bayesian probability, which treats parameters as random variables and seeks to estimate their distribution.
 
 ### Frequentist Approach vs. Bayesian Approach
-이러한 베이지안 접근법과 상반되는 접근법은 **빈도주의 (Frequentist approach)**로써, 지금껏 우리가 정리해온 방식이다. 빈도주의에서는 모수를 이용해 확률분포를 정의할 수 있을 때의 경우로 한정해서 설명하며, 확률변수가 특정한 분포를 따른다고 가정하고 그 분포의 모수를 추정한다. 이 때, 모수는 고정된 상수이다.
+The **frequentiest approach**, which underpins the traditional methods of statistical inference, assumes that parameters are fixed constants and probabilities are defined as the long-run relative frequency of events over repeated trials. Statistical inference in this context involves estimating these fixed parameters under the assumption that the data follows a specific probability distribution.
 
-빈도주의에서 확률은 ‘무한히 많은 시행’에서의 상대적인 빈도로 정의된다. 통계적 추론은 모수를 추정하는 것에 목적을 둔다.
+To summarize,
+* Parameters are fixed constants.
+* Probability is interpreted as the frequency of an event in a large number of trials.
+* Objective is to estimate parameters using methods like maximum likelihood estimation (MLE).
 
-반면 베이지안 접근법의 경우, 자료가 특정한 분포에서 나왔다고 할때, 그 분포의 모수를 고정된 상수가 아니라 확률변수로 가정한다. 즉, 모수도 분포를 가지는 것으로 간주한다.
+In contrast, the **Bayesian approach** treats parameters as random variables with their own probability distributions. Bayesian inference combines prior knowledge or beliefs about the parameters (expressed as a prior distribution) with observed data to update their belief about the parameters using Bayes' theorem.
 
-확률을 빈도나 어떤 시스템의 물리적 속성으로 여기는 빈도주의와는 달리, 베이지안들은 주관주의 확률이론에 따라 확률을 어떤 사람이 특정한 순간에 주어진 명제나 사건에 대해 갖는 믿음의 정도(degree of belief)로 정의한다.
+To summarize,
+* Parameters are random variables with their own distributions.
+* Probability is interpreted as a degree of belief in a hypothesis or event, incorporating subjective perspectives.
+* The process updates prior beliefs to a posterior distribution based on observed data.
 
-따라서 모수의 분포를 추정할 때 현재 관찰된 자료뿐만 아니라 이전의 자료나 연구자의 믿음 등도 고려되며, 새로운 자료가 수집되면 모수에 대한 추정이 업데이트 된다.
+For example, Consider the statement: "The probability of getting heads when flipping a coin is 50%."
 
-> 잘 생각해보면, 현실에서 확률에 따른 의사결정을 진행하는 과정은 대부분의 경우 빈도주의가 아니라 베이지안 접근법을 따른다. 즉, 의사결정자의 주관적인 확률 이론과 믿음에 의해 결정되는 경우가 많다. 본인은 부정하고 싶겠지만...
+* Frequentist interpretation:  
+  If the coin is flipped thousands or millions of times, approximately 50% of the flips will results in heads.
+    * Objective probability based on the frequency of outcomes over repeated trials.
+* Bayesian interpretation:  
+  My confidence that the next flip will result in heads is 50%.
+    * Subjective probability based on personal belief or prior knowledge about the coin.
+
+> While one might deny it, most real-world decision-making processes are inherently Bayesian, as they involve subjective probabilities, beliefs, and continuous updates based on new evidence.
 {: .prompt-tip}
 
-예를 들어, 명제 "동전 하나를 던졌을 때 앞면이 나올 확률이 50퍼센트이다."를 두 관점으로 보면 다음과 같다.
-
-* 빈도주의: 동전 하나 던지기를 수천, 수만번 하면 그중에 50퍼센트는 앞면이 나오고, 50퍼센트는 뒷면이 나온다.
-    * 객관적 확률로 해석
-* 베이지안: 동전 하나 던지기의 결과가 앞면이 나올 것이라는 확신은 50퍼센트이다.
-    * 주관적 확률로 해석
-
 ### Elements Required for Bayesian Inference
-베이지안 추론을 위해서는 세 가지 요소가 필요하다.
+Bayesian inference requires three key components:
 
-* **사전분포 (Prior distribution)**: 모수 $\theta$의 분포로 자료를 보기 전 분석자의 $\theta$에 관한 정보(불확실성의 정도)를 나타낸다. $\pi(\theta)$로 나타낸다.
-    * 보통 과거 정보를 사전분포로 삼는다.
+* **Prior distribution ($\pi(\theta)$)**  
+  The prior distribution represents the analysts' knowledge or degree of uncertainty about the parameter $\theta$ before observing the data.
+    * $\pi(\theta)$: the distribution of $\theta$ based on prior beliefs or historical information.
+    * Often, past data or expert knowledge is used to determine the prior distribution.
 
-* **확률모형 (Probability model)**: 주어진 $\theta$에 대해, 데이터 $x$의 분포에 관한 모형이다. $x \mid \theta \sim f(x \mid \theta)$ 또는 $\pi(x \mid \theta)$로 나타낸다.
+* **Probability model ($f(x \mid \theta)$ or $\pi(x \mid \theta)$)**  
+  The probability model describes the distribution of the data $x$, given the parameter $\theta$.
+    * $x \mid \theta \sim f(x \mid \theta)$ or $\pi(x \mid \theta)$: the likelihood of observing the data under the parameter $\theta$.
 
-* **사후분포 (Posterior distribution)**: 데이터 $x$가 주어졌을 때, $\theta$의 확률분포로, 데이터를 본 후의 분석자의 $\theta$에 대한 불확실성을 나타낸다. $\pi(\theta \mid x)$로 나타낸다.
-    * 사후분포의 평균 (Posterior mean), 중앙값 (Posterior median), 최빈값 (Maximum a Posteriori, MAP) 등을 모수 $\theta$의 베이지안 추정값으로 사용할 수 있다.
+* **Posterior distribution ($\pi(\theta \mid x)$)**  
+  The posterior distribution reflects the updated knowledge about $\theta$ after observing the data $x$. It represents the degree of uncertainty regarding $\theta$ after incorporating the data.
+    * $\pi(\theta \mid x)$: the conditional probability distribution of $\theta$ given $x$.
+    * The posterior mean, posterior median, and MAP (Maximum a Posteriori) can be used as Bayesian estimators of the parameter $\theta$.
 
 ## Posterior Distribution
-
-베이지안 추론에서 확률모형과 사후분포는 조건부 확률분포로 해석한다. 즉, $f(x \mid \theta) = f(x, \theta) / \pi(\theta)$, $f(\theta \mid x) = f(x, \theta) / f(x)$ 이다.
-
-베이즈 정리를 이용하면, 사후확률은 다음과 같다 (여기서는 $f$와 $\pi$를 혼용해서 사용한다).
+In Bayesian inference, the likelihood and posterior distributions are interpreted as conditional probability distributions. Specifically:
 
 $$
-\pi(\theta \mid x) = f(x \mid \theta)\pi(\theta) / f(x) \propto f(x \mid \theta)\pi(\theta)
+f(x \mid \theta) = f(x, \theta) / \pi(\theta), \quad f(\theta \mid x) = f(x, \theta) / f(x).
 $$
 
-> 즉, 사후분포는 가능도와 사전분포의 곱에 비례한다.
+Using Bayes' theorem, the posterior probability is expressed as follows (here, $f$ and $p$ are used interchangeably):
+
+$$
+\pi(\theta \mid x) = f(x \mid \theta)\pi(\theta) / f(x) \propto f(x \mid \theta)\pi(\theta).
+$$
+
+> The posterior distribution is proportional to the product of the likelihood and the prior distribution.
 {: .prompt-info}
 
 ### Example for Normal Distribution
-분산 $\sigma^2$가 알려져 있을 때, 평균 $\theta$, 분산 $\sigma^2$인 정규분포를 생각해 보자.
+Consider a normal distribution with known variance $\sigma^2$ and mean $\theta$. The likelihood is given by:
 
 $$
-f(x \mid \theta, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left( -\frac{(x-\theta)^2}{2\sigma^2} \right), \quad -\infty < \theta < \infty
+f(x \mid \theta, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left( -\frac{(x-\theta)^2}{2\sigma^2} \right), \quad -\infty < \theta < \infty.
 $$
 
-모수 $\theta$의 사전분포도 정규분포로 가정한다.
+Assume a normal priority distribution for the parameter $\theta$.
 
 $$
 \theta \sim N(m, s^2)
 $$
 
-즉, 자료 관측 이전에 $\theta$가 대략 $m$이라 믿으며, 그 불확실성이 대략 $s$만큼인 정규분포를 따른다고 믿는 것을 뜻한다.
+This reflects the belief that $\theta$ is approximately $m$, with uncertainty $s^2$.
 
-데이터 $X = (X_1, X_2, \ldots, X_n)$가 관측되었다고 할 때 ($n$개의 관측값), 베이즈정리에 의한 사후분포는
-
-$$
-\pi(\theta | x) \propto \frac{1}{\sqrt{2 \pi s^2}} \exp \left\{ - \frac{(\theta - m)^2}{2 s^2} \right\} \left( \frac{1}{\sqrt{2 \pi \sigma^2}} \right)^n \exp \left\{ - \sum_{i=1}^{n} \frac{(X_i - \theta)^2}{2 \sigma^2} \right\}
-$$
-
-이 식을 정리하면
+When data $X = (X_1, X_2, \ldots, X_n)$ is observed ($n$ observations), the posterior distribution, using Bayes' theorem, is:
 
 $$
-\theta | X \sim N \left( \frac{\frac{\bar{X}}{\sigma^2 / n} + \frac{m}{s^2}}{\frac{1}{\sigma^2 / n} + \frac{1}{s^2}}, \left( \frac{1}{\sigma^2 / n} + \frac{1}{s^2} \right)^{-1} \right)
+\pi(\theta | x) \propto \frac{1}{\sqrt{2 \pi s^2}} \exp \left\{ - \frac{(\theta - m)^2}{2 s^2} \right\} \left( \frac{1}{\sqrt{2 \pi \sigma^2}} \right)^n \exp \left\{ - \sum_{i=1}^{n} \frac{(X_i - \theta)^2}{2 \sigma^2} \right\}.
 $$
 
-사후분포의 평균 $\frac{\frac{\bar{X}}{\sigma^2 / n} + \frac{m}{s^2}}{\frac{1}{\sigma^2 / n} + \frac{1}{s^2}}$은 데이터의 평균 (이 경우 $\bar{X}$)과 사전분포의 평균 ($m$)의 가중평균으로 볼 수 있다.
+Simplifying this expression results in:
 
-> 데이터의 수가 커질수록, 사후분포의 평균은 데이터의 평균에 가까워지고, 사후분포의 산포는 작아진다. 즉, 이는 $\theta$가 데이터의 평균에 가까운 값을 가질 것이라는 믿음이 더 커진 것이라 생각할 수 있다.
+$$
+\theta | X \sim N \left( \frac{\frac{\bar{X}}{\sigma^2 / n} + \frac{m}{s^2}}{\frac{1}{\sigma^2 / n} + \frac{1}{s^2}}, \left( \frac{1}{\sigma^2 / n} + \frac{1}{s^2} \right)^{-1} \right),
+$$
+
+where $\bar{X}$ is the sample mean.
+
+The posterior mean,
+
+$$
+\frac{\frac{\bar{X}}{\sigma^2 / n} + \frac{m}{s^2}}{\frac{1}{\sigma^2 / n} + \frac{1}{s^2}}
+$$
+
+is a weighted average of the sample mean $\bar{X}$ and the prior mean $m$, with weights inversely proportional to their variances.
+
+> With more data, the posterior distribution becomes more concentrated around the sample mean, reflecting stronger belief in $\theta$ being close to the observed data's mean.
 {: .prompt-info}
 
 ## Bayesian Decision Theory
-**베이지안 결정이론 (Bayesian Decision Theory)**이란, 에러를 최소화하고 가장 위험이 작은 결정을 내리는 원칙으로, 에러마다 다른 가중치를 주는 손실함수를 고려하여 ‘기대손실’이 가장 작게끔 하도록 결정을 내리는 원칙을 뜻한다.
+**Bayesian decision theory** is a principle for making decisions that minimize errors and associated risks by considering a **loss function** that assigns different weights to errors. The goal is to make decisions that minimize expected loss.
 
-> 베이지안 결정이론은 패턴 분류 문제에 대한 기본적인 통계학적 접근방법으로 볼 수 있다.
+> Bayesian decision theory provides a fundamental statistical framework for pattern classification problems.
 {: .prompt-info}
 
-베이지안 결정이론에 의한 베이지안 추정량의 예로, 제곱손실함수 (quadratic loss function)의 기댓값을 최소화하는 추정량은 사후분포의 평균 (posterior mean) 이다.
+An example of Bayesian estimators derived from decision theory is the posterior mean, which minimize the expected loss under a quadratic loss function.
 
 ### Example for Bayesian Decision Theory
-병원에서 암을 진단하기 위하여 어떤 환자의 X-Ray 사진을 찍었다고 하자. 이 사진을 토대로 그 환자가 암에 걸렸는지 아닌지를 확인하는데에 결정이론이 사용될 수 있다.
+Consider a hospital scenario where an X-ray image is taken to diagnose whether a patient has cancer. Bayesian decision theory can guide the determination of the patient's condition.
 
-X-Ray 결과를 $x$, 환자의 암 여부를 $t$라고 생각하자. $t$가 $C_1$인 경우를 암, $C_2$인 경우를 암이 아닌 경우로 본다. 우리는 X-Ray 결과 $x$를 토대로 그 환자의 암 발병 여부를 정하게 되므로 결국 관심있는 확률은 $p(C_k \mid x)$가 된다.
+* Let $x$ represent the X-ray result.
+* Let $t$ represent the true condtion: $t=C_1$ (cancer) or $t=C_2$ (no cancer).
 
-베이즈 정리를 적용하면 아래의 식이 성립한다.
+The decision is based on the posterior probability $p(C_k \mid x)$, which can be computed using Bayes' theorem:
 
 $$
-p(C_k \mid x) = \frac{p(x \mid C_k)p(C_k)}{p(x)}
+p(C_k \mid x) = \frac{p(x \mid C_k)p(C_k)}{p(x)}.
 $$
 
-이 때, $p(C_k)$는 클래스 $C_k$의 사전확률밀도함수, $p(C_k \mid x)$는
-사후확률밀도함수가 된다.
+Here, $p(C_k)$ is the prior PDF of class $C_k$, and $p(C_k \mid x)$ is the posterior PDF given $x$.
 
-이 결정에서의 목적은 실제와는 다른 선택을 할 가능성을 줄이는 데에 있다. 즉, 암이 아닌데 암이라고 판정하거나 암인데 암이 아니라고 판정할 가능성을 줄이는 것이다.
+The objective is to minimize the chance of incorrect decisions, such as:
 
-모든 $x$에 대하여 이 결과에 따라 판정을 특정한 경우로 할당하는 규칙이 필요하다. 이러한 규칙은 전체입력공간을 각 경우마다 각각의 결정구역 $R_k$으로 나눈다. 즉 $x \in R_1$인 경우에는 $C_1$이라고 판정을 하는 식이다.
+1. Diagnosing cancer when there is none (false positive).
+2. Failing to diagnose cancer when it is present (false negative).
 
-오분류할 가능성을 $p(\text{mistake})$라고 하면, 아래와 같이 나타낼 수 있다.
+The decision rule is required for every $x$. This rule divide the entire input space into decision regions $R_k$, where:
+
+* $x \in R_1$: decide $C_1$ (cancer).
+* $x \in R_2$: decide $C_2$ (no cancer).
+
+Then the probability of misclassification, $p(\text{mistake})$, is:
 
 $$
 \begin{aligned}
 p(\text{mistake}) &= p(x \in R_1, C_2) + p(x \in R_2, C_1)\\
-&= \int_{R_1} p(x, C_2)dx + \int_{R_2} p(x, C_1)dx
+&= \int_{R_1} p(x, C_2)dx + \int_{R_2} p(x, C_1)dx.
 \end{aligned}
 $$
 
-즉, 위의 $p(\text{mistake})$를 최소화하는 $R_1$과 $R_2$를 찾는 문제가 된다.
+Thus, the goal is to find $R_1$ and $R_2$ that minimizes $p(\text{mistake})$.
 
-그런데 똑같은 오분류라도 실제 상황에서는 암이 아닌데 암인 것으로 진단한 경우보다 암이 맞는데 암이 아닌 것으로 진단한 경우가 훨씬 심각한 문제를 초래하게 된다. 따라서 결정을 내림에 있어서 이러한 정보를 반영하여 생각해
-볼 필요가 있다. 예를 들어 위에서 언급한 후자의 경우에 10000배의 패널티를 주고 의사결정과정을 진행할 수 있다.
+However, in real-world scenarios, the consequences of errors are not equal. For example, diagnosing cancer incorrectly as no cancer (false negative) has far more serious consequences than vice versa.
 
-이 경우에는 행이 각각 실제 암, 실제 암이 아님, 열이 암으로 판정, 암이 아님으로 판정이라고 할 때, $$\begin{bmatrix} 0 & 10000 \\ 1 & 0 \end{bmatrix}$$ 가 손실함수를 나타내는 손실행렬이 된다.
-
-최종적으로 문제는 손실함수를 고려한 아래 기대손실을 최소화시키는 결정을 내리는 것으로 바뀌게 된다.
+To account for this, penalties are incorporated using a loss function. For example, if a false negative has 10000 times the penalty of a false positive, the loss matrix could be:
 
 $$
-\mathbb{E}(L) = \sum_k \sum_j \int_{R_j} L_{kj} p(x, C_k) dx
+L=
+\begin{bmatrix}
+0 & 10000 \\
+1 & 0
+\end{bmatrix}.
 $$
+
+Here, rows correspond to the true condition, and columns correspond to the decision.
+
+Finally, the decision-making process is transformed into minimizing the **expected loss**:
+
+$$
+\mathbb{E}(L) = \sum_k \sum_j \int_{R_j} L_{kj} p(x, C_k) dx.
+$$
+
+By minimizing $\mathbb{E}(L)$, decisions are optimized to account for both the likelihood of outcomes and the associated risks, ensuring that severe misclassification are appropriated penalized.
 
 ## Prior Distribution
 사전분포는 데이터를 보기전에 모수 $\theta$의 불확실성을 나타내는 확률분포이다.

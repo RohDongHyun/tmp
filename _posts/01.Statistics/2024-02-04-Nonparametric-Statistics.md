@@ -239,7 +239,7 @@ $\gamma^2 > 1$ $(\sigma_Y^2 > \sigma_X^2)$ means that the $Y$ observations are m
 Although $T_{AB}$ is defined as the sum of the Ansari-Bradley scores for $X$, a similar test can be performed by considering the scores for $Y$.
 
 ## Correlation Analysis
-**Correlation analysis** is a method used to examine the linear relationship between two variables. 두 변수 간에 어떤 선형적 관계를 가지고 있는 지를 분석하는 방법을 말한다. 
+**Correlation analysis** is a method used to examine the linear relationship between two variables.
 
 ### Correlation Coefficient
 
@@ -394,7 +394,7 @@ However, there are several issues with the Three-sigma rule.
 
 * Large sample size: when the sample size is large, observations that are not actual outliers might be incorrectly flagged as outliers.
 
-* Small sample size: when the sample size is small, genuine outliers might not be detected. 자료의 수가 적은 경우 이상치를 찾아내지 못할 수 있다.
+* Small sample size: when the sample size is small, genuine outliers might not be detected.
 
 * Multiple outliers: if multiple outliers are present, the sample standard deviation $s$ can become inflated, making the rule ineffective.
 
@@ -411,8 +411,13 @@ where:
 This approach is more robust to outliers because it uses the median and median deviation (MAD) instead of the mean and standard deviation, which are sensitive to extreme values.
 
 > Sketch of Proof)
+> 
 > $$
-> \sqrt{\frac{1}{n}\sum (x_i - \bar{X})^2} \approx \sqrt{\text{median} \left((x_i - \bar{X})^2 \right)} = \text{median}(\vert x_i - \bar{X} \vert) \approx \text{median}(\vert x_i - \text{median}(x) \vert)
+> \begin{aligned}
+> \sqrt{\frac{1}{n}\sum (x_i - \bar{X})^2} &\approx \sqrt{\text{median} \left((x_i - \bar{X})^2 \right)}\\
+& = \text{median}(\vert x_i - \bar{X} \vert)\\
+&\approx \text{median}(\vert x_i - \text{median}(x) \vert)
+> \end{aligned}
 > $$
 >
 > and $E(\text{MAD}(x))_\text{Normal}=0.6745\sigma$.
